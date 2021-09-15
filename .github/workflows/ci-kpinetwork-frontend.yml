@@ -106,11 +106,11 @@ jobs:
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'output'
-          tf_actions_working_dir: 'infrastructure/cdn'
+          tf_actions_working_dir: 'infrastructure'
 
       - name: Print Distribution ID
         run: |
-          echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+          echo "The Distribution is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
 
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
