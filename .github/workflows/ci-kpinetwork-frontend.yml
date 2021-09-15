@@ -110,9 +110,9 @@ jobs:
           echo $output
           echo $outputRegion
           echo $outputBucket
-          echo '::set-output name=prod_distribution_id::$output'
-          echo '::set-output name=region::$outputRegion'
-          echo '::set-output name=bucket_distribution::$outputBucket'
+          echo "::set-output name=prod_distribution_id::$output"
+          echo "::set-output name=region::$outputRegion"
+          echo "::set-output name=bucket_distribution::$outputBucket"
       - name: Print Distribution ID
         run: |
           echo "The prod_distribution_id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
