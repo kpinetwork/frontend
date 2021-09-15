@@ -105,11 +105,17 @@ jobs:
         run: |
           cd infrastructure
           output=$(terraform output prod_distribution_id)
+          outputRegion=$(terraform output region)
+          outputBucket=$(terraform output bucket_name)
           echo $output
-          echo "::set-output name=mix-prod_distribution_id::$output\n"
+          echo $outputRegion
+          echo $outputBucket
+          echo "::set-output name=prod_distribution_id::$output\n"
+          echo "::set-output name=region::$outputRegion\n"
+          echo "::set-output name=bucket_distribution::$outputBucket\n"
       - name: Print Distribution ID
         run: |
-          echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+          echo "The prod_distribution_id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
 
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
