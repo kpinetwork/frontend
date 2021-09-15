@@ -110,19 +110,21 @@ jobs:
           echo $output
           echo $outputRegion
           echo $outputBucket
-          echo "::set-output name=prod_distribution_id::$output\n"
-          echo "::set-output name=region::$outputRegion\n"
-          echo "::set-output name=bucket_distribution::$outputBucket\n"
+          echo "::set-output name=prod_distribution_id::$output"
+          echo "::set-output name=region::$outputRegion"
+          echo "::set-output name=bucket_distribution::$outputBucket"
       - name: Print Distribution ID
         run: |
           echo "The prod_distribution_id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+          echo "The region is ${{ steps.tf-outputs.outputs.region }}"
+          echo "The bucket_distribution is ${{ steps.tf-outputs.outputs.bucket_distribution }}"
 
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
         env:
           SOURCE_DIR: './build'
-          AWS_REGION: ${{ secrets.REGION }}
-          AWS_S3_BUCKET: ${{ secrets.FRONTEND_BUCKET }}
+          AWS_REGION: ${{ steps.tf-outputs.outputs.region }}
+          AWS_S3_BUCKET: ${{ steps.tf-outputs.outputs.bucket_distribution }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -131,6 +133,6 @@ jobs:
         env:
           DISTRIBUTION: ${{ steps.tf-outputs.outputs.prod_distribution_id }}
           PATHS: '/index.html'
-          AWS_REGION: ${{ secrets.REGION }}
+          AWS_REGION: ${{ steps.tf-outputs.outputs.region }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
