@@ -104,15 +104,15 @@ jobs:
         id: tf-outputs
         run: |
           cd infrastructure
-          output=$(terraform output prod_distribution_id)
-          outputRegion=$(terraform output region)
-          outputBucket=$(terraform output bucket_name)
+          output=$(terraform output -raw prod_distribution_id)
+          outputRegion=$(terraform output -raw region)
+          outputBucket=$(terraform output -raw bucket_name)
           echo $output
           echo $outputRegion
           echo $outputBucket
-          echo "::set-output name=prod_distribution_id::$output"
-          echo "::set-output name=region::$outputRegion"
-          echo "::set-output name=bucket_distribution::$outputBucket"
+          echo '::set-output name=prod_distribution_id::$output'
+          echo '::set-output name=region::$outputRegion'
+          echo '::set-output name=bucket_distribution::$outputBucket'
       - name: Print Distribution ID
         run: |
           echo "The prod_distribution_id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
