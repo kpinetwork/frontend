@@ -29,9 +29,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-
       - name: Terraform Init
         id: init
         env:
@@ -53,7 +50,6 @@ jobs:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           TF_VAR_aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          TF_VAR_aws_terraform_user_provider: ${{ secrets.AWS_TERRAFORM_USER_PROVIDER }}
         run: |
           cd infrastructure
           terraform plan -no-color
@@ -92,3 +88,40 @@ jobs:
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+
+      - name: Terraform Apply
+        env:
+          TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+        run: |
+          cd infrastructure
+          terraform apply -auto-approve
+
+      - name: Get Terraform outputs
+          uses: dflook/terraform-output@v1
+          id: tf-outputs
+          with:
+            path: infrastructure
+
+      - name: Print Distribution ID
+          run: |
+            echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+
+      - name: Sync S3
+        uses: jakejarvis/s3-sync-action@master
+        env:
+          SOURCE_DIR: './build'
+          AWS_REGION: ${{ secrets.REGION }}
+          AWS_S3_BUCKET: ${{ secrets.FRONTEND_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Invalidate Cloudfront Distribution
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ steps.tf-outputs.outputs.prod_distribution_id }}
+          PATHS: '/index.html'
+          AWS_REGION: ${{ secrets.REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
