@@ -103,8 +103,10 @@ jobs:
       - name: Get Terraform outputs
         id: tf-outputs
         run: |
+          cd infrastructure
           output=$(terraform output prod_distribution_id)
           echo $output
+          echo "::set-output name=mix-prod_distribution_id::$output\n"
       - name: Print Distribution ID
         run: |
           echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
