@@ -99,14 +99,14 @@ jobs:
           terraform apply -auto-approve
 
       - name: Get Terraform outputs
-          uses: dflook/terraform-output@v1
-          id: tf-outputs
-          with:
-            path: infrastructure
+        uses: dflook/terraform-output@v1
+        id: tf-outputs
+        with:
+         path: infrastructure
 
       - name: Print Distribution ID
-          run: |
-            echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+        run: |
+          echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
 
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
