@@ -1,4 +1,4 @@
-name: CD process to deploy to backend service
+name: CD process to deploy frontend project
 
 on:
   push:

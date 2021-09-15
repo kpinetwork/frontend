@@ -1,4 +1,4 @@
-name: CI process for backend app
+name: CI process for frontend app
 
 on:
   pull_request:
@@ -10,38 +10,25 @@ jobs:
   ci-test:
     name: Unit tests and CodeCoverage
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up python
-        uses: actions/setup-python@v2
+      - name: Clone and checkout branch
+        uses: actions/checkout@master
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
         with:
-          python-version: '3.8.X'
+          node-version: '12.x'
+
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install 'coverage[toml]' pytest pytest-cov juniper
-          pip install -r requirements/prod.txt
-      - name: Run Unit Tests
-        run: |
-           python -m pytest src/tests
-      - name: Generate coverage
-        run: |
-          python -m pytest --cache-clear --cov-config=.coveragerc --cov=src/ src/tests/* > pytest-coverage.txt
-      - name: Generate coverage comment
-        uses: coroo/pytest-coverage-commentator@v1.0.2
-        with:
-          pytest-coverage: pytest-coverage.txt
-      - name: Check threshold of coverage
-        run: |
-          coverage report -m --fail-under=100
-      - name: Build lambdas
-        run: |
-          juni build
-      - name: Listing lambdas
-        run: |
-          ls dist
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        run: npm install
+
+      - name: Running tests
+        run: npm run test --if-present
+
+      - name: Build project
+        run: npm run build
+
       - name: Terraform Init
         id: init
         env:
@@ -50,11 +37,13 @@ jobs:
         run: |
           cd infrastructure
           terraform init -backend-config="access_key=$TF_VAR_aws_access_key_id" -backend-config="secret_key=$TF_VAR_aws_secret_access_key"
+
       - name: Terraform Validate
         id: validate
         run: |
           cd infrastructure
           terraform validate -no-color
+
       - name: Terraform Plan
         id: plan
         env:
@@ -65,6 +54,7 @@ jobs:
           cd infrastructure
           terraform plan -no-color
         continue-on-error: true
+
       - name: Update Pull Request
         uses: actions/github-script@0.9.0
         if: github.event_name == 'pull_request'
@@ -94,6 +84,44 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
+
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+
+      - name: Terraform Apply
+        env:
+          TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+        run: |
+          cd infrastructure
+          terraform apply -auto-approve
+
+      - name: Get Terraform outputs
+          uses: dflook/terraform-output@v1
+          id: tf-outputs
+          with:
+            path: infrastructure
+
+      - name: Print Distribution ID
+          run: |
+            echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+
+      - name: Sync S3
+        uses: jakejarvis/s3-sync-action@master
+        env:
+          SOURCE_DIR: './build'
+          AWS_REGION: ${{ secrets.REGION }}
+          AWS_S3_BUCKET: ${{ secrets.FRONTEND_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Invalidate Cloudfront Distribution
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ steps.tf-outputs.outputs.prod_distribution_id }}
+          PATHS: '/index.html'
+          AWS_REGION: ${{ secrets.REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
