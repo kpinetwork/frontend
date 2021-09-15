@@ -100,17 +100,21 @@ jobs:
           cd infrastructure
           terraform apply -auto-approve
 
-      - name: 'Terraform Output'
-        id: terraform
-        uses: hashicorp/terraform-github-actions@master
+      - name: Get Terraform outputs
+        uses: dflook/terraform-output@v1
+        id: tf-outputs
+        env:
+          TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
-          tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'output'
-          tf_actions_working_dir: 'infrastructure'
+         backend_config: |
+          access_key=$TF_VAR_aws_access_key_id
+          secret_key=$TF_VAR_aws_secret_access_key
+         path: infrastructure
 
       - name: Print Distribution ID
         run: |
-          echo "The Distribution is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
+          echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
 
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
