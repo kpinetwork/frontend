@@ -101,17 +101,10 @@ jobs:
           terraform apply -auto-approve
 
       - name: Get Terraform outputs
-        uses: dflook/terraform-output@v1
         id: tf-outputs
-        env:
-          TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        with:
-         backend_config: |
-          access_key=$TF_VAR_aws_access_key_id
-          secret_key=$TF_VAR_aws_secret_access_key
-         path: infrastructure
-
+        run: |
+          output=$(terraform output prod_distribution_id)
+          echo $output
       - name: Print Distribution ID
         run: |
           echo "The vpc-id is ${{ steps.tf-outputs.outputs.prod_distribution_id }}"
