@@ -29,6 +29,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
       - name: Terraform Init
         id: init
         env:
