@@ -107,9 +107,9 @@ jobs:
         id: tf-outputs
         run: |
           cd infrastructure
-          output=$(terraform output prod_distribution_id)
-          outputRegion=$(terraform output region)
-          outputBucket=$(terraform output bucket_name)
+          output=$(terraform output  --raw prod_distribution_id)
+          outputRegion=$(terraform output --raw region)
+          outputBucket=$(terraform output --raw bucket_name)
           echo $output
           echo $outputRegion
           echo $outputBucket
