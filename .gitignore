@@ -102,6 +102,9 @@ infrastructure/.terraform/
 # Ignored vscode files
 .vscode/
 
+# Env files
+*.env
+
 # Ignore Any Generated JSON Files
 operations/automation-script/apply.json
 operations/automation-script/configversion.json
