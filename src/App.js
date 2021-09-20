@@ -11,6 +11,7 @@ function App() {
                         KPINETWORKS IS UNDER CONSTRUCTION
                     </h1>
                 </Grid>
+
                 <Grid item xs={12} justify="space-between"
                       style={{
                           backgroundImage: `url(${site_under_construction})`,
@@ -20,6 +21,7 @@ function App() {
                           backgroundPosition: "center"
                       }}>
                 </Grid>
+
                 <Grid item xs={12}>
                     <p style={{color: "black"}}>
                         Our website going to be ready soon.
