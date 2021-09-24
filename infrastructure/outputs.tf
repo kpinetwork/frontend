@@ -1,5 +1,5 @@
-output "prod_distribution_id" {
-  value = module.cdn.prod_distribution_id
+output "distribution_id" {
+  value = module.cdn.cloudfront_distribution.id
 }
 
 output "region" {

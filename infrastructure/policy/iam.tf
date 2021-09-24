@@ -4,8 +4,8 @@
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 # ----------------------------------------------------------------------------------------------------------------------
 
-resource "aws_s3_bucket_policy" "S3" {
-  bucket = var.bucket_information.id
+resource "aws_s3_bucket_policy" "S3_WWW" {
+  bucket = var.www_bucket_information.id
   policy = <<EOF
 {
   "Version": "2008-10-17",
@@ -17,7 +17,7 @@ resource "aws_s3_bucket_policy" "S3" {
             "AWS": "*"
          },
          "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::${var.bucket_information.name}/*"
+         "Resource": "arn:aws:s3:::${var.www_bucket_information.name}/*"
     }, {
         "Sid": "",
         "Effect": "Allow",
@@ -26,8 +26,8 @@ resource "aws_s3_bucket_policy" "S3" {
         },
         "Action": "s3:*",
         "Resource": [
-            "arn:aws:s3:::${var.bucket_information.name}",
-            "arn:aws:s3:::${var.bucket_information.name}/*"
+            "arn:aws:s3:::${var.www_bucket_information.name}",
+            "arn:aws:s3:::${var.www_bucket_information.name}/*"
         ]
     }]
 }

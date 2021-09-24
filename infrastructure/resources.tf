@@ -1,6 +1,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# POLICY INPUTS
+# AWS IMPORTED RESOURCES
 # ----------------------------------------------------------------------------------------------------------------------
-variable "www_bucket_information" {}
-variable "aws_terraform_user_provider" {}
-variable "aws_account_id" {}
+
+resource "aws_route53_zone" "kpinetwork" {
+  name = var.root_domain_name
+}

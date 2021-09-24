@@ -1,6 +1,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# POLICY INPUTS
+# CERTIFICATES INPUTS
 # ----------------------------------------------------------------------------------------------------------------------
-variable "www_bucket_information" {}
-variable "aws_terraform_user_provider" {}
-variable "aws_account_id" {}
+
+variable "domain" {}
+variable "www_domain" {}
+variable "cert_validation_fqdn" {}
+variable "aws_access_key_id" {}
+variable "aws_secret_access_key" {}
+variable "cert_sans" {}

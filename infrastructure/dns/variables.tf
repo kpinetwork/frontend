@@ -1,6 +1,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# POLICY INPUTS
+# DNS INPUTS
 # ----------------------------------------------------------------------------------------------------------------------
-variable "www_bucket_information" {}
-variable "aws_terraform_user_provider" {}
-variable "aws_account_id" {}
+
+variable "domain" {}
+variable "www_domain" {}
+variable "aws_cloudfront_distribution" {}
+variable "domain_certificates" {}
+variable "cert_sans" {}
+variable "hosted_zone_id" {}
