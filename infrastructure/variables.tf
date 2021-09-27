@@ -31,5 +31,5 @@ variable "root_domain_name" {
 }
 
 locals {
-  cert_sans = [var.root_domain_name, var.www_domain_name, "*.${var.root_domain_name}"]
+  cert_sans = ["*.${var.root_domain_name}"]
 }

@@ -30,15 +30,11 @@ resource "aws_route53_record" "kpinetwork_www_domain" {
   }
 }
 
-
 resource "aws_route53_record" "cert_validations" {
-  count = length(var.cert_sans) + 1
-
+  count = length(var.domain_certificates.cert.domain_validation_options)
   zone_id = var.hosted_zone_id
-  allow_overwrite = true
-  name = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_name, count.index)
-  type = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_type, count.index)
-  records = [
-    element(var.domain_certificates.cert.domain_validation_options.*.resource_record_value, count.index)]
-  ttl = 60
+  name    = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_name, count.index)
+  type    = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_type, count.index)
+  records = [element(var.domain_certificates.cert.domain_validation_options.*.resource_record_value, count.index)]
+  ttl     = 60
 }

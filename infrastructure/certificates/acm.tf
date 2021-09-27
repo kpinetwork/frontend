@@ -6,7 +6,7 @@
 # @param domain_name A domain name for which the certificate should be issued
 # @param validation_method Which method to use for validation. DNS or EMAIL are valid
 # @param lifecycle The lifecycle block and its contents are meta-arguments, available for all resource blocks regardless of type.
-# @param subject_alternative_names Set of domains that should be SANs in the issued certificate
+# @param subject_alternative_names Set of domains that should be SANs in the issued certificate (uncomment if you need to renew the certificates)
 # ----------------------------------------------------------------------------------------------------------------------
 
 resource "aws_acm_certificate" "cert" {
@@ -17,7 +17,7 @@ resource "aws_acm_certificate" "cert" {
   lifecycle {
     create_before_destroy = true
   }
-  subject_alternative_names = var.cert_sans
+//subject_alternative_names = var.cert_sans
 }
 
 # ----------------------------------------------------------------------------------------------------------------------
