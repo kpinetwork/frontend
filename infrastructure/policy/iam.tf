@@ -4,36 +4,6 @@
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 # ----------------------------------------------------------------------------------------------------------------------
 
-//resource "aws_s3_bucket_policy" "S3_WWW" {
-//  bucket = var.www_bucket_information.id
-//  policy = <<EOF
-//{
-//  "Version": "2008-10-17",
-//    "Statement": [
-//    {
-//        "Sid": "PublicReadForGetBucketObjects",
-//        "Effect": "Allow",
-//        "Principal": {
-//            "AWS": "*"
-//         },
-//         "Action": "s3:GetObject",
-//         "Resource": "arn:aws:s3:::${var.www_bucket_information.name}/*"
-//    }, {
-//        "Sid": "",
-//        "Effect": "Allow",
-//        "Principal": {
-//            "AWS": "arn:aws:iam::${var.aws_account_id}:user/${var.aws_terraform_user_provider}"
-//        },
-//        "Action": "s3:*",
-//        "Resource": [
-//            "arn:aws:s3:::${var.www_bucket_information.name}",
-//            "arn:aws:s3:::${var.www_bucket_information.name}/*"
-//        ]
-//    }]
-//}
-//EOF
-//}
-
 data "aws_iam_policy_document" "www_bucket" {
   statement {
     actions = ["s3:GetObject"]
