@@ -5,5 +5,6 @@ output "bucket_information" {
     name : var.www_domain
     id: aws_s3_bucket.bucket.id
     website_endpoint: aws_s3_bucket.bucket.website_endpoint
+    arn: aws_s3_bucket.bucket.arn
   }
 }

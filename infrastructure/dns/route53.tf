@@ -30,11 +30,17 @@ resource "aws_route53_record" "kpinetwork_www_domain" {
   }
 }
 
+# ----------------------------------------------------------------------------------------------------------------------
+# Route53 Here the certificates are added to hosted zone
+# @allow_overwrite Allows the overwrite to replace the record, uncomment if you need to renew the certificate
+# ----------------------------------------------------------------------------------------------------------------------
+
 resource "aws_route53_record" "cert_validations" {
-  count = length(var.domain_certificates.cert.domain_validation_options)
+  count = length(var.cert_sans) + 1
   zone_id = var.hosted_zone_id
   name    = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_name, count.index)
   type    = element(var.domain_certificates.cert.domain_validation_options.*.resource_record_type, count.index)
   records = [element(var.domain_certificates.cert.domain_validation_options.*.resource_record_value, count.index)]
+  //allow_overwrite = true
   ttl     = 60
 }

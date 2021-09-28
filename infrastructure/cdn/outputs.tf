@@ -5,3 +5,7 @@ output "cloudfront_distribution" {
     hosted_zone_id: aws_cloudfront_distribution.distribution.hosted_zone_id
   }
 }
+
+output "cloudfront_distribution_oai" {
+  value = aws_cloudfront_origin_access_identity.web_distribution.iam_arn
+}

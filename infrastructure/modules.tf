@@ -17,6 +17,7 @@ module "policy" {
   www_bucket_information = module.buckets.bucket_information
   aws_terraform_user_provider = var.aws_terraform_user_provider
   aws_account_id = var.aws_account_id
+  cloudfront_distribution_oai_iam_arn = module.cdn.cloudfront_distribution_oai
 }
 
 module "dns" {

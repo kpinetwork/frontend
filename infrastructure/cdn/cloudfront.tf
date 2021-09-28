@@ -14,6 +14,9 @@ resource "aws_cloudfront_distribution" "distribution" {
   origin {
     origin_id = var.www_domain
     domain_name = var.www_bucket_information.bucket_regional_domain_name
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.web_distribution.cloudfront_access_identity_path
+    }
   }
   aliases = [
     var.domain,
@@ -74,5 +77,8 @@ resource "aws_cloudfront_distribution" "distribution" {
     ssl_support_method = "sni-only"
   }
   price_class = "PriceClass_100"
+}
 
+resource "aws_cloudfront_origin_access_identity" "web_distribution" {
+  comment = "Managed by Terraform"
 }
