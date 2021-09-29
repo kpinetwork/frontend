@@ -1,8 +1,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# BUCKETS INPUTS
+# DNS INPUTS
 # ----------------------------------------------------------------------------------------------------------------------
-variable "bucket_name" {
-  default = "kpinetwork-frontend"
-}
+
 variable "domain" {}
 variable "www_domain" {}
+variable "aws_cloudfront_distribution" {}
+variable "domain_certificates" {}
+variable "cert_sans" {}
+variable "hosted_zone_id" {}

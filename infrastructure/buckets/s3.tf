@@ -4,9 +4,9 @@
 # @param acl The canned ACL to apply
 # @param cors_rule A rule of Cross-Origin Resource Sharing
 # ----------------------------------------------------------------------------------------------------------------------
-resource "aws_s3_bucket" "kpinetwork_frontend" {
-  bucket = var.bucket_name
-  acl = "private"
+resource "aws_s3_bucket" "bucket" {
+  bucket = var.www_domain
+  acl = "public-read"
   cors_rule {
     allowed_headers = [
       "*"]
@@ -18,5 +18,11 @@ resource "aws_s3_bucket" "kpinetwork_frontend" {
     allowed_origins = [
       "*"]
     max_age_seconds = 3000
+  }
+
+  force_destroy = true
+  website {
+    index_document = "index.html"
+    error_document = "index.html"
   }
 }

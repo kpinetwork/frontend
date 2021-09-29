@@ -7,8 +7,8 @@ function App() {
         <div className="App">
             <Grid container style={{textAlign: "center"}} fixed={true}>
                 <Grid item xs={12}>
-                    <h1 style={{color: "black", fontWeight: 700}}>
-                        KPINETWORKS IS UNDER CONSTRUCTION
+                    <h1 data-testid="tittle" style={{color: "black", fontWeight: 700}}>
+                        KPINETWORK IS UNDER CONSTRUCTION
                     </h1>
                 </Grid>
                 <Grid item xs={12} justify="space-between"

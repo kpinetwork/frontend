@@ -2,4 +2,7 @@
 # CDN INPUTS
 # ----------------------------------------------------------------------------------------------------------------------
 
-variable "bucket_information" {}
+variable "www_bucket_information" {}
+variable "domain" {}
+variable "www_domain" {}
+variable "certificate_arn" {}
