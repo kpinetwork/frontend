@@ -1,0 +1,258 @@
+{
+  "NAVIGATION": {
+    "CHILDREN": {
+      "COMPANYDETAILS": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      },
+      "ABOUTKPINETWORK": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      },
+      "ADMINPAGE": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      },
+      "COHORTDETAILS": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      },
+      "MYCOHORTS": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      },
+      "MYPORTFOLIO": {
+        "PERMISSIONS": {
+          "ADMIN": "SHOW",
+          "GUEST": "SHOW"
+        }
+      }
+    }
+  },
+  "COMPANYDETAILS": {
+    "CHILDREN": {
+      "WIDGETS": {
+        "CHILDREN": {
+          "57F22A69-8B8F-4910-AD68-A7E84FD4A3EF": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "79AD9192-7F6F-419A-897D-8F302E967AA7": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "84C7DF71-6670-46CB-9571-102CE589CC47": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "EBD972E9-3A95-4CD0-920A-55430C90C91E": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "FA17CCC1-F59F-4F6B-9FA7-801C6B475E0C": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      },
+      "VIEWS": {
+        "CHILDREN": {
+          "QUARTERRESULTS": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "COMPANYDASHBOARD": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "QUARTERBUDGET": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      }
+    }
+  },
+  "ADMINPAGE": {
+    "CHILDREN": {
+      "WIDGETS": {
+        "CHILDREN": {
+          "C44A3D3E-9E91-45DD-A417-C00196CB7CE9": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "D433BB05-0386-408C-A681-B76E78EB5D1C": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "E035D974-CEB1-4B78-B483-1526FC7187A0": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      },
+      "VIEWS": {
+        "CHILDREN": {
+          "COMPANYCONFIGURATION": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "USERADMINISTRATION": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      }
+    }
+  },
+  "COHORTDETAILS": {
+    "CHILDREN": {
+      "WIDGETS": {
+        "CHILDREN": {
+          "309E55B8-0428-4447-992E-6A98401CC78D": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "8EFA4F02-18AF-47D8-BB9F-A0C9F2C5F22D": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "C706C9E0-3CF2-4720-AF66-908B9F4682F1": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "F1413F4B-1551-4CC0-AC74-5FD88373637D": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      },
+      "VIEWS": {
+        "CHILDREN": {
+          "COHORTDASHBOARD": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "RESULTS": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      }
+    }
+  },
+  "MYCOHORTS": {
+    "CHILDREN": {
+      "WIDGETS": {
+        "CHILDREN": {
+          "CE0AFBB0-1A5A-4638-BE12-BD568222D718": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "E2E6324E-47D9-4658-B744-DD4AA56C2E4A": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      },
+      "VIEWS": {
+        "CHILDREN": {
+          "COHORTTABLE": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "COHORTREPORT": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      }
+    }
+  },
+  "MYPORTFOLIO": {
+    "CHILDREN": {
+      "WIDGETS": {
+        "CHILDREN": {
+          "72CE3EF5-FE85-4909-81A8-5C13D43A4861": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          },
+          "CEC2FDD3-EEE6-49BF-9423-C85C37B34B5D": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      },
+      "VIEWS": {
+        "CHILDREN": {
+          "MYCOMPANIES": {
+            "PERMISSIONS": {
+              "ADMIN": "SHOW",
+              "GUEST": "SHOW"
+            }
+          }
+        }
+      }
+    }
+  }
+}
