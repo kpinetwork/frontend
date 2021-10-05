@@ -1,0 +1,11 @@
+{
+  "companyName": "KPI Network",
+  "defaultHomePage": "/my-portfolio",
+  "exportConfig": "StandardExport",
+  "layout": {
+    "position": "nav-left"
+  },
+  "productName": "KPI Dashboard",
+  "crossLinkingInteraction": "Context menu",
+  "rootVersion": "2.10.0.415.5d8cf180a"
+}
