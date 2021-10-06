@@ -22,7 +22,7 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:
-          projectBaseDir: apps/cloud/src/app/modules/custom/hello-world
+          projectBaseDir: apps/cloud/src/app/modules/custom/hello-world/
           args: >
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
