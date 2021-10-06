@@ -30,6 +30,7 @@ jobs:
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.sources=cloud/src/app/modules/custom/
             -Dsonar.test.exclusions=**.test.js
+            -Dsonar.sonar.exclusions=apps/cloud/src/app/modules/custom/third-parties,apps/cloud/src/app/modules/custom/auth
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
