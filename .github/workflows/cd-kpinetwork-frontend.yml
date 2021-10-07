@@ -21,11 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install nx
+        run: sudo npm i -g @nrwl/cli
+
       - name: Running tests
         run: npm run test --if-present
 
       - name: Build project
-        run: npm run build
+        run: nx build cloud --prod
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -87,7 +90,7 @@ jobs:
       - name: Sync S3
         uses: jakejarvis/s3-sync-action@master
         env:
-          SOURCE_DIR: './build'
+          SOURCE_DIR: './dist/apps/cloud'
           AWS_REGION: ${{ steps.tf-outputs.outputs.region }}
           AWS_S3_BUCKET: ${{ steps.tf-outputs.outputs.bucket_distribution }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

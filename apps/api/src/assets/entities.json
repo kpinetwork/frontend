@@ -1,0 +1,2511 @@
+[
+  {
+    "name": "Timestamp",
+    "formatType": "timestamp",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "format": {},
+        "formatType": "timestamp",
+        "name": "displayValue",
+        "params": [],
+        "statisticalType": "Data - Numeric - Temporal",
+        "type": "timestamp"
+      }
+    }
+  },
+  {
+    "name": "PortfolioOwner",
+    "description": "",
+    "formatType": "email",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {},
+        "formatType": "email",
+        "name": "displayValue",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "email"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [
+          "Cohort",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "Cohort",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 20,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "segment": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Utilities",
+            "Healthcare",
+            "Financials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Information Technology",
+            "Communication Services",
+            "Real Estate"
+          ]
+        },
+        "formatType": "prime",
+        "name": "segment",
+        "params": [
+          "Segment",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "growthRate": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "growthRate",
+        "params": [
+          "GrowthRate",
+          20,
+          [
+            1,
+            100
+          ]
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "arrayOf"
+      },
+      "companyMarginGroup": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Low",
+            "Medium",
+            "High"
+          ],
+          "valueLabels": [
+            {
+              "label": "Low",
+              "value": 1
+            },
+            {
+              "label": "Medium",
+              "value": 2
+            },
+            {
+              "label": "High",
+              "value": 3
+            }
+          ],
+          "max": 3,
+          "min": 1,
+          "severityBad": 1,
+          "severityGood": 3,
+          "severityLevels": 3
+        },
+        "formatType": "severity_level",
+        "name": "companyMarginGroup",
+        "params": [
+          "CompanyMarginGroup",
+          20,
+          [
+            1,
+            3
+          ]
+        ],
+        "statisticalType": "Data - Categorical - ordered - Severity Ranking",
+        "type": "arrayOf"
+      },
+      "geography": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Greenland",
+            "North America",
+            "South America",
+            "Eurpoe",
+            "The Middle East",
+            "North Africa",
+            "Sub-Saharan Africa",
+            "Aisia",
+            "Southeast Asia",
+            "APAC",
+            "Australia",
+            "Central America"
+          ]
+        },
+        "formatType": "prime",
+        "name": "geography",
+        "params": [
+          "Geography",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "vertical": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Accounting & Auditing",
+            "Banking",
+            "Business Services",
+            "Consumer Services",
+            "Ecommerce",
+            "Education",
+            "Energy",
+            "Engineering",
+            "Entertainment",
+            "Environment",
+            "Fashion",
+            "Government",
+            "Healthcare",
+            "Heavy Industry",
+            "Hotels",
+            "Infrastructure",
+            "Insurance",
+            "Law",
+            "Life Sciences",
+            "Logistics",
+            "Manufacturing",
+            "Media",
+            "Mining",
+            "Non-profits",
+            "Professional Services",
+            "Publishing",
+            "Real Estate",
+            "Transportation",
+            "Utilities",
+            "Wholesale"
+          ]
+        },
+        "formatType": "prime",
+        "name": "vertical",
+        "params": [
+          "Vertical",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [
+          "QuarterResults",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      },
+      "portfolioOwner": {
+        "description": "",
+        "format": {},
+        "formatType": "email",
+        "name": "portfolioOwner",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "PortfolioOwner"
+      }
+    }
+  },
+  {
+    "name": "Company",
+    "description": "",
+    "formatType": "company_name",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "displayValue",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "company_name"
+      },
+      "companyMarginGroup": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Low",
+            "Medium",
+            "High"
+          ],
+          "valueLabels": [
+            {
+              "label": "Low",
+              "value": 1
+            },
+            {
+              "label": "Medium",
+              "value": 2
+            },
+            {
+              "label": "High",
+              "value": 3
+            }
+          ],
+          "max": 3,
+          "min": 1,
+          "severityBad": 1,
+          "severityGood": 3,
+          "severityLevels": 3
+        },
+        "formatType": "severity_level",
+        "name": "companyMarginGroup",
+        "params": [
+          1,
+          3
+        ],
+        "statisticalType": "Data - Categorical - ordered - Severity Ranking",
+        "type": "CompanyMarginGroup"
+      },
+      "growthRate": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "growthRate",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "GrowthRate"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [
+          "QuarterResults",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "sizeProfile": {
+        "description": "",
+        "format": {
+          "examples": [
+            "<$10 million",
+            "$10-<30 million",
+            "$30-<$50 million",
+            "$50-$100 million",
+            "$100 million+"
+          ]
+        },
+        "formatType": "prime",
+        "name": "sizeProfile",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "SizeProfile"
+      },
+      "growthProfile": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Negative growth (<0%)",
+            "Low growth (0-<10%)",
+            "Medium growth (10%-<30%)",
+            "High growth (30%-<50%)",
+            "Hyper growth (50%+)"
+          ]
+        },
+        "formatType": "prime",
+        "name": "growthProfile",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "GrowthProfile"
+      },
+      "vertical": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Accounting & Auditing",
+            "Banking",
+            "Business Services",
+            "Consumer Services",
+            "Ecommerce",
+            "Education",
+            "Energy",
+            "Engineering",
+            "Entertainment",
+            "Environment",
+            "Fashion",
+            "Government",
+            "Healthcare",
+            "Heavy Industry",
+            "Hotels",
+            "Infrastructure",
+            "Insurance",
+            "Law",
+            "Life Sciences",
+            "Logistics",
+            "Manufacturing",
+            "Media",
+            "Mining",
+            "Non-profits",
+            "Professional Services",
+            "Publishing",
+            "Real Estate",
+            "Transportation",
+            "Utilities",
+            "Wholesale"
+          ]
+        },
+        "formatType": "prime",
+        "name": "vertical",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Vertical"
+      },
+      "segment": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Utilities",
+            "Healthcare",
+            "Financials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Information Technology",
+            "Communication Services",
+            "Real Estate"
+          ]
+        },
+        "formatType": "prime",
+        "name": "segment",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Segment"
+      },
+      "geography": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Greenland",
+            "North America",
+            "South America",
+            "Eurpoe",
+            "The Middle East",
+            "North Africa",
+            "Sub-Saharan Africa",
+            "Aisia",
+            "Southeast Asia",
+            "APAC",
+            "Australia",
+            "Central America"
+          ]
+        },
+        "formatType": "prime",
+        "name": "geography",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Geography"
+      },
+      "margin": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "margin",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "Margin"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Cohort"
+      }
+    }
+  },
+  {
+    "name": "Margin",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "Company"
+      }
+    }
+  },
+  {
+    "name": "Geography",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 12,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Greenland",
+            "North America",
+            "South America",
+            "Eurpoe",
+            "The Middle East",
+            "North Africa",
+            "Sub-Saharan Africa",
+            "Aisia",
+            "Southeast Asia",
+            "APAC",
+            "Australia",
+            "Central America"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "Greenland",
+            "North America",
+            "South America",
+            "Eurpoe",
+            "The Middle East",
+            "North Africa",
+            "Sub-Saharan Africa",
+            "Aisia",
+            "Southeast Asia",
+            "APAC",
+            "Australia",
+            "Central America"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Cohort"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "Segment",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 11,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Utilities",
+            "Healthcare",
+            "Financials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Information Technology",
+            "Communication Services",
+            "Real Estate"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "Energy",
+            "Materials",
+            "Industrials",
+            "Utilities",
+            "Healthcare",
+            "Financials",
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Information Technology",
+            "Communication Services",
+            "Real Estate"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [
+          "Cohort",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "Company"
+      }
+    }
+  },
+  {
+    "name": "Vertical",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 30,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Accounting & Auditing",
+            "Banking",
+            "Business Services",
+            "Consumer Services",
+            "Ecommerce",
+            "Education",
+            "Energy",
+            "Engineering",
+            "Entertainment",
+            "Environment",
+            "Fashion",
+            "Government",
+            "Healthcare",
+            "Heavy Industry",
+            "Hotels",
+            "Infrastructure",
+            "Insurance",
+            "Law",
+            "Life Sciences",
+            "Logistics",
+            "Manufacturing",
+            "Media",
+            "Mining",
+            "Non-profits",
+            "Professional Services",
+            "Publishing",
+            "Real Estate",
+            "Transportation",
+            "Utilities",
+            "Wholesale"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "Accounting & Auditing",
+            "Banking",
+            "Business Services",
+            "Consumer Services",
+            "Ecommerce",
+            "Education",
+            "Energy",
+            "Engineering",
+            "Entertainment",
+            "Environment",
+            "Fashion",
+            "Government",
+            "Healthcare",
+            "Heavy Industry",
+            "Hotels",
+            "Infrastructure",
+            "Insurance",
+            "Law",
+            "Life Sciences",
+            "Logistics",
+            "Manufacturing",
+            "Media",
+            "Mining",
+            "Non-profits",
+            "Professional Services",
+            "Publishing",
+            "Real Estate",
+            "Transportation",
+            "Utilities",
+            "Wholesale"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [
+          "Cohort",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "GrowthProfile",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 5,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Negative growth (<0%)",
+            "Low growth (0-<10%)",
+            "Medium growth (10%-<30%)",
+            "High growth (30%-<50%)",
+            "Hyper growth (50%+)"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "Negative growth (<0%)",
+            "Low growth (0-<10%)",
+            "Medium growth (10%-<30%)",
+            "High growth (30%-<50%)",
+            "Hyper growth (50%+)"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "SizeProfile",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 5,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "<$10 million",
+            "$10-<30 million",
+            "$30-<$50 million",
+            "$50-$100 million",
+            "$100 million+"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "<$10 million",
+            "$10-<30 million",
+            "$30-<$50 million",
+            "$50-$100 million",
+            "$100 million+"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "QuarterResults",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 19,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [
+          [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "oneOfEach"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Cohort"
+      },
+      "budgetedVariableMargin": {
+        "description": "",
+        "format": {
+          "max": 200,
+          "min": -200
+        },
+        "formatType": "percent",
+        "name": "budgetedVariableMargin",
+        "params": [
+          -200,
+          200
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "BudgetedVariableMargin"
+      },
+      "actualVariableMargin": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "actualVariableMargin",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "ActualVariableMargin"
+      },
+      "ruleOf40Actual": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -25
+        },
+        "formatType": "integer",
+        "name": "ruleOf40Actual",
+        "params": [
+          -25,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "RuleOf40Actual"
+      },
+      "growthRevenue": {
+        "description": "",
+        "format": {
+          "max": 300,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "growthRevenue",
+        "params": [
+          1,
+          300
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "GrowthRevenue"
+      },
+      "ruleOf40Budgeted": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -40
+        },
+        "formatType": "integer",
+        "name": "ruleOf40Budgeted",
+        "params": [
+          -40,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "RuleOf40Budgeted"
+      },
+      "ebitdaVsBudget": {
+        "description": "",
+        "format": {
+          "max": 200,
+          "min": -50
+        },
+        "formatType": "percent",
+        "name": "ebitdaVsBudget",
+        "params": [
+          -50,
+          200
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "EbitdaVsBudget"
+      },
+      "budgetRevenue": {
+        "description": "",
+        "format": {
+          "max": 300,
+          "min": 5
+        },
+        "formatType": "integer",
+        "name": "budgetRevenue",
+        "params": [
+          5,
+          300
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "BudgetRevenue"
+      },
+      "actualEbitdaMargins": {
+        "description": "",
+        "format": {
+          "max": 25,
+          "min": -25
+        },
+        "formatType": "percent",
+        "name": "actualEbitdaMargins",
+        "params": [
+          -25,
+          25
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "ActualEbitdaMargins"
+      },
+      "ebidta": {
+        "description": "",
+        "format": {
+          "max": 50,
+          "min": -25
+        },
+        "formatType": "integer",
+        "name": "ebidta",
+        "params": [
+          -25,
+          50
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "Ebidta"
+      },
+      "revenueVsBudget": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": 25
+        },
+        "formatType": "percent",
+        "name": "revenueVsBudget",
+        "params": [
+          25,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "RevenueVsBudget"
+      },
+      "budgetedEbitdaMargins": {
+        "description": "",
+        "format": {
+          "max": 25,
+          "min": -25
+        },
+        "formatType": "percent",
+        "name": "budgetedEbitdaMargins",
+        "params": [
+          -25,
+          25
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "BudgetedEbitdaMargins"
+      },
+      "growthRevBudgeted": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "growthRevBudgeted",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "GrowthRevBudgeted"
+      },
+      "ebitdaGrowthBudgeted": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "ebitdaGrowthBudgeted",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "EbitdaGrowthBudgeted"
+      },
+      "revenue": {
+        "description": "",
+        "format": {
+          "max": 256,
+          "min": 1
+        },
+        "formatType": "integer",
+        "name": "revenue",
+        "params": [
+          1,
+          256
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "Revenue"
+      },
+      "growthEbitda": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -150
+        },
+        "formatType": "percent",
+        "name": "growthEbitda",
+        "params": [
+          -150,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "GrowthEbitda"
+      },
+      "bugdetEbidta": {
+        "description": "",
+        "format": {
+          "max": 50,
+          "min": -50
+        },
+        "formatType": "integer",
+        "name": "bugdetEbidta",
+        "params": [
+          -50,
+          50
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "BugdetEbidta"
+      },
+      "timestamp": {
+        "format": {
+          "dateTime": {
+            "month": "2-digit",
+            "year": "numeric"
+          }
+        },
+        "formatType": "timestamp",
+        "name": "timestamp",
+        "params": [],
+        "statisticalType": "Data - Numeric - Temporal",
+        "type": "Timestamp"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "Company"
+      }
+    }
+  },
+  {
+    "name": "BugdetEbidta",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 50,
+          "min": -50
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          -50,
+          50
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "GrowthEbitda",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -150
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          -150,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "Revenue",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 256,
+          "min": 1
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          1,
+          256
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "EbitdaGrowthBudgeted",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "GrowthRevBudgeted",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "BudgetedEbitdaMargins",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 25,
+          "min": -25
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          -25,
+          25
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "RevenueVsBudget",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": 25
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          25,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "Ebidta",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 50,
+          "min": -25
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          -25,
+          50
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "ActualEbitdaMargins",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 25,
+          "min": -25
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          -25,
+          25
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "BudgetRevenue",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 300,
+          "min": 5
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          5,
+          300
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "EbitdaVsBudget",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 200,
+          "min": -50
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          -50,
+          200
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "RuleOf40Budgeted",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -40
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          -40,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "GrowthRevenue",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 300,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          300
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "RuleOf40Actual",
+    "description": "",
+    "formatType": "integer",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 150,
+          "min": -25
+        },
+        "formatType": "integer",
+        "name": "displayValue",
+        "params": [
+          -25,
+          150
+        ],
+        "statisticalType": "Data - Numeric - NTG - Discrete",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "ActualVariableMargin",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "BudgetedVariableMargin",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 200,
+          "min": -200
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          -200,
+          200
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "quarterResults": {
+        "description": "",
+        "format": {
+          "examples": [
+            "2021 q3",
+            "2021 q2",
+            "2021 q1",
+            "2020 q4",
+            "2020 q3",
+            "2020 q2",
+            "2020 q1",
+            "2019 q4",
+            "2019 q3",
+            "2019 q2",
+            "2019 q1",
+            "2018 q4",
+            "2018 q3",
+            "2018 q2",
+            "2018 q1",
+            "2017 q4",
+            "2017 q3",
+            "2017 q2",
+            "2017 q1"
+          ]
+        },
+        "formatType": "prime",
+        "name": "quarterResults",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "QuarterResults"
+      }
+    }
+  },
+  {
+    "name": "GrowthRate",
+    "description": "",
+    "formatType": "percent",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "max": 100,
+          "min": 1
+        },
+        "formatType": "percent",
+        "name": "displayValue",
+        "params": [
+          1,
+          100
+        ],
+        "statisticalType": "Data - Numeric - NTG - Percentage",
+        "type": "integer"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [
+          "Cohort",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical",
+        "type": "arrayOf"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "Company"
+      }
+    }
+  },
+  {
+    "name": "CompanyMarginGroup",
+    "description": "",
+    "formatType": "severity_level",
+    "initialQuantity": 3,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Low",
+            "Medium",
+            "High"
+          ],
+          "valueLabels": [
+            {
+              "label": "Low",
+              "value": 1
+            },
+            {
+              "label": "Medium",
+              "value": 2
+            },
+            {
+              "label": "High",
+              "value": 3
+            }
+          ],
+          "max": 3,
+          "min": 1,
+          "severityBad": 1,
+          "severityGood": 3,
+          "severityLevels": 3
+        },
+        "formatType": "severity_level",
+        "name": "displayValue",
+        "params": [
+          1,
+          3,
+          {
+            "severityGood": 3,
+            "severityBad": 1,
+            "severityLevels": 3,
+            "valueLabels": [
+              {
+                "label": "Low",
+                "value": 1
+              },
+              {
+                "label": "Medium",
+                "value": 2
+              },
+              {
+                "label": "High",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "statisticalType": "Data - Categorical - ordered - Severity Ranking",
+        "type": "severity_level"
+      },
+      "cohort": {
+        "description": "",
+        "format": {
+          "examples": [
+            "Cohort 1",
+            "Cohort2",
+            "Cohort3",
+            "Cohort4",
+            "Cohort5",
+            "Cohort6",
+            "Cohort7",
+            "Cohort8",
+            "Cohort9",
+            "Cohort10",
+            "Cohort11",
+            "Cohort12",
+            "Cohort13",
+            "Cohort14",
+            "Cohort15",
+            "Cohort16",
+            "Cohort17",
+            "Cohort18",
+            "Cohort19",
+            "Cohort20"
+          ]
+        },
+        "formatType": "prime",
+        "name": "cohort",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "Cohort"
+      },
+      "company": {
+        "description": "",
+        "format": {},
+        "formatType": "company_name",
+        "name": "company",
+        "params": [
+          "Company",
+          20,
+          []
+        ],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "arrayOf"
+      }
+    }
+  },
+  {
+    "name": "CohortName",
+    "description": "",
+    "formatType": "prime",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {},
+        "formatType": "prime",
+        "name": "displayValue",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "string"
+      },
+      "cohortUrl": {
+        "description": "",
+        "format": {},
+        "formatType": "url",
+        "name": "cohortUrl",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "CohortUrl"
+      }
+    }
+  },
+  {
+    "name": "CohortUrl",
+    "description": "",
+    "formatType": "url",
+    "initialQuantity": 50,
+    "properties": {
+      "displayValue": {
+        "description": "",
+        "format": {},
+        "formatType": "url",
+        "name": "displayValue",
+        "params": [],
+        "statisticalType": "Data - Categorical - free form",
+        "type": "url"
+      },
+      "cohortName": {
+        "description": "",
+        "format": {},
+        "formatType": "prime",
+        "name": "cohortName",
+        "params": [],
+        "statisticalType": "Data - Categorical",
+        "type": "CohortName"
+      }
+    }
+  }
+]
