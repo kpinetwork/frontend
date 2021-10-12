@@ -57,11 +57,7 @@
         },
         "formatType": "prime",
         "name": "cohort",
-        "params": [
-          "Cohort",
-          20,
-          []
-        ],
+        "params": ["Cohort", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       }
@@ -147,11 +143,7 @@
         },
         "formatType": "prime",
         "name": "segment",
-        "params": [
-          "Segment",
-          20,
-          []
-        ],
+        "params": ["Segment", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -163,25 +155,14 @@
         },
         "formatType": "percent",
         "name": "growthRate",
-        "params": [
-          "GrowthRate",
-          20,
-          [
-            1,
-            100
-          ]
-        ],
+        "params": ["GrowthRate", 20, [1, 100]],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "arrayOf"
       },
       "companyMarginGroup": {
         "description": "",
         "format": {
-          "examples": [
-            "Low",
-            "Medium",
-            "High"
-          ],
+          "examples": ["Low", "Medium", "High"],
           "valueLabels": [
             {
               "label": "Low",
@@ -204,14 +185,7 @@
         },
         "formatType": "severity_level",
         "name": "companyMarginGroup",
-        "params": [
-          "CompanyMarginGroup",
-          20,
-          [
-            1,
-            3
-          ]
-        ],
+        "params": ["CompanyMarginGroup", 20, [1, 3]],
         "statisticalType": "Data - Categorical - ordered - Severity Ranking",
         "type": "arrayOf"
       },
@@ -235,11 +209,7 @@
         },
         "formatType": "prime",
         "name": "geography",
-        "params": [
-          "Geography",
-          20,
-          []
-        ],
+        "params": ["Geography", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -281,11 +251,7 @@
         },
         "formatType": "prime",
         "name": "vertical",
-        "params": [
-          "Vertical",
-          20,
-          []
-        ],
+        "params": ["Vertical", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -316,11 +282,7 @@
         },
         "formatType": "prime",
         "name": "quarterResults",
-        "params": [
-          "QuarterResults",
-          20,
-          []
-        ],
+        "params": ["QuarterResults", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -329,11 +291,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       },
@@ -366,11 +324,7 @@
       "companyMarginGroup": {
         "description": "",
         "format": {
-          "examples": [
-            "Low",
-            "Medium",
-            "High"
-          ],
+          "examples": ["Low", "Medium", "High"],
           "valueLabels": [
             {
               "label": "Low",
@@ -393,10 +347,7 @@
         },
         "formatType": "severity_level",
         "name": "companyMarginGroup",
-        "params": [
-          1,
-          3
-        ],
+        "params": [1, 3],
         "statisticalType": "Data - Categorical - ordered - Severity Ranking",
         "type": "CompanyMarginGroup"
       },
@@ -408,10 +359,7 @@
         },
         "formatType": "percent",
         "name": "growthRate",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "GrowthRate"
       },
@@ -442,11 +390,7 @@
         },
         "formatType": "prime",
         "name": "quarterResults",
-        "params": [
-          "QuarterResults",
-          20,
-          []
-        ],
+        "params": ["QuarterResults", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -581,10 +525,7 @@
         },
         "formatType": "percent",
         "name": "margin",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "Margin"
       },
@@ -636,10 +577,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -736,11 +674,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       }
@@ -817,11 +751,7 @@
         },
         "formatType": "prime",
         "name": "cohort",
-        "params": [
-          "Cohort",
-          20,
-          []
-        ],
+        "params": ["Cohort", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -945,11 +875,7 @@
         },
         "formatType": "prime",
         "name": "cohort",
-        "params": [
-          "Cohort",
-          20,
-          []
-        ],
+        "params": ["Cohort", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -958,11 +884,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       }
@@ -1004,11 +926,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       }
@@ -1034,13 +952,7 @@
         "formatType": "prime",
         "name": "displayValue",
         "params": [
-          [
-            "<$10 million",
-            "$10-<30 million",
-            "$30-<$50 million",
-            "$50-$100 million",
-            "$100 million+"
-          ]
+          ["<$10 million", "$10-<30 million", "$30-<$50 million", "$50-$100 million", "$100 million+"]
         ],
         "statisticalType": "Data - Categorical",
         "type": "oneOfEach"
@@ -1050,11 +962,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       }
@@ -1159,10 +1067,7 @@
         },
         "formatType": "percent",
         "name": "budgetedVariableMargin",
-        "params": [
-          -200,
-          200
-        ],
+        "params": [-200, 200],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "BudgetedVariableMargin"
       },
@@ -1174,10 +1079,7 @@
         },
         "formatType": "percent",
         "name": "actualVariableMargin",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "ActualVariableMargin"
       },
@@ -1189,10 +1091,7 @@
         },
         "formatType": "integer",
         "name": "ruleOf40Actual",
-        "params": [
-          -25,
-          150
-        ],
+        "params": [-25, 150],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "RuleOf40Actual"
       },
@@ -1204,10 +1103,7 @@
         },
         "formatType": "percent",
         "name": "growthRevenue",
-        "params": [
-          1,
-          300
-        ],
+        "params": [1, 300],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "GrowthRevenue"
       },
@@ -1219,10 +1115,7 @@
         },
         "formatType": "integer",
         "name": "ruleOf40Budgeted",
-        "params": [
-          -40,
-          150
-        ],
+        "params": [-40, 150],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "RuleOf40Budgeted"
       },
@@ -1234,10 +1127,7 @@
         },
         "formatType": "percent",
         "name": "ebitdaVsBudget",
-        "params": [
-          -50,
-          200
-        ],
+        "params": [-50, 200],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "EbitdaVsBudget"
       },
@@ -1249,10 +1139,7 @@
         },
         "formatType": "integer",
         "name": "budgetRevenue",
-        "params": [
-          5,
-          300
-        ],
+        "params": [5, 300],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "BudgetRevenue"
       },
@@ -1264,10 +1151,7 @@
         },
         "formatType": "percent",
         "name": "actualEbitdaMargins",
-        "params": [
-          -25,
-          25
-        ],
+        "params": [-25, 25],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "ActualEbitdaMargins"
       },
@@ -1279,10 +1163,7 @@
         },
         "formatType": "integer",
         "name": "ebidta",
-        "params": [
-          -25,
-          50
-        ],
+        "params": [-25, 50],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "Ebidta"
       },
@@ -1294,10 +1175,7 @@
         },
         "formatType": "percent",
         "name": "revenueVsBudget",
-        "params": [
-          25,
-          150
-        ],
+        "params": [25, 150],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "RevenueVsBudget"
       },
@@ -1309,10 +1187,7 @@
         },
         "formatType": "percent",
         "name": "budgetedEbitdaMargins",
-        "params": [
-          -25,
-          25
-        ],
+        "params": [-25, 25],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "BudgetedEbitdaMargins"
       },
@@ -1324,10 +1199,7 @@
         },
         "formatType": "percent",
         "name": "growthRevBudgeted",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "GrowthRevBudgeted"
       },
@@ -1339,10 +1211,7 @@
         },
         "formatType": "percent",
         "name": "ebitdaGrowthBudgeted",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "EbitdaGrowthBudgeted"
       },
@@ -1354,10 +1223,7 @@
         },
         "formatType": "integer",
         "name": "revenue",
-        "params": [
-          1,
-          256
-        ],
+        "params": [1, 256],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "Revenue"
       },
@@ -1369,10 +1235,7 @@
         },
         "formatType": "percent",
         "name": "growthEbitda",
-        "params": [
-          -150,
-          150
-        ],
+        "params": [-150, 150],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "GrowthEbitda"
       },
@@ -1384,10 +1247,7 @@
         },
         "formatType": "integer",
         "name": "bugdetEbidta",
-        "params": [
-          -50,
-          50
-        ],
+        "params": [-50, 50],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "BugdetEbidta"
       },
@@ -1429,10 +1289,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          -50,
-          50
-        ],
+        "params": [-50, 50],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -1483,10 +1340,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          -150,
-          150
-        ],
+        "params": [-150, 150],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1537,10 +1391,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          1,
-          256
-        ],
+        "params": [1, 256],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -1591,10 +1442,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1645,10 +1493,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1699,10 +1544,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          -25,
-          25
-        ],
+        "params": [-25, 25],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1753,10 +1595,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          25,
-          150
-        ],
+        "params": [25, 150],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1807,10 +1646,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          -25,
-          50
-        ],
+        "params": [-25, 50],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -1861,10 +1697,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          -25,
-          25
-        ],
+        "params": [-25, 25],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -1915,10 +1748,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          5,
-          300
-        ],
+        "params": [5, 300],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -1969,10 +1799,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          -50,
-          200
-        ],
+        "params": [-50, 200],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -2023,10 +1850,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          -40,
-          150
-        ],
+        "params": [-40, 150],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -2077,10 +1901,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          300
-        ],
+        "params": [1, 300],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -2131,10 +1952,7 @@
         },
         "formatType": "integer",
         "name": "displayValue",
-        "params": [
-          -25,
-          150
-        ],
+        "params": [-25, 150],
         "statisticalType": "Data - Numeric - NTG - Discrete",
         "type": "integer"
       },
@@ -2185,10 +2003,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -2239,10 +2054,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          -200,
-          200
-        ],
+        "params": [-200, 200],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -2293,10 +2105,7 @@
         },
         "formatType": "percent",
         "name": "displayValue",
-        "params": [
-          1,
-          100
-        ],
+        "params": [1, 100],
         "statisticalType": "Data - Numeric - NTG - Percentage",
         "type": "integer"
       },
@@ -2328,11 +2137,7 @@
         },
         "formatType": "prime",
         "name": "cohort",
-        "params": [
-          "Cohort",
-          20,
-          []
-        ],
+        "params": ["Cohort", 20, []],
         "statisticalType": "Data - Categorical",
         "type": "arrayOf"
       },
@@ -2356,11 +2161,7 @@
       "displayValue": {
         "description": "",
         "format": {
-          "examples": [
-            "Low",
-            "Medium",
-            "High"
-          ],
+          "examples": ["Low", "Medium", "High"],
           "valueLabels": [
             {
               "label": "Low",
@@ -2446,11 +2247,7 @@
         "format": {},
         "formatType": "company_name",
         "name": "company",
-        "params": [
-          "Company",
-          20,
-          []
-        ],
+        "params": ["Company", 20, []],
         "statisticalType": "Data - Categorical - free form",
         "type": "arrayOf"
       }

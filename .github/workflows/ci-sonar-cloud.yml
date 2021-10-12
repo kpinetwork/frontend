@@ -8,8 +8,6 @@ on:
       - master
   pull_request:
     types: [opened, edited, reopened, synchronize]
-    branches-ignore:
-      - development-kleeen
     branches:
       - master
 
