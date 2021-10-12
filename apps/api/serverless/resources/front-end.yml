@@ -12,7 +12,7 @@ Resources:
           - Effect: Allow
             Action:
               - s3:GetObject
-            Resource: 
+            Resource:
               Fn::Join:
                 - /
                 - - Fn::GetAtt:
@@ -20,8 +20,8 @@ Resources:
                       - Arn
                   - '*'
             Principal:
-              CanonicalUser: 
-                Fn::GetAtt: 
+              CanonicalUser:
+                Fn::GetAtt:
                   - FrontPageWebsiteOriginAccessIdentity
                   - S3CanonicalUserId
   FrontPageWebsiteOriginAccessIdentity:
@@ -34,16 +34,16 @@ Resources:
     DependsOn:
       - FrontPageWebsiteBucket
     Properties:
-      DistributionConfig: 
+      DistributionConfig:
         Origins:
-          - DomainName: 
-              Fn::GetAtt: 
+          - DomainName:
+              Fn::GetAtt:
                 - FrontPageWebsiteBucket
                 - DomainName
             Id: S3Origin
             S3OriginConfig:
-              OriginAccessIdentity: 
-                Fn::Join: 
+              OriginAccessIdentity:
+                Fn::Join:
                   - /
                   - - origin-access-identity
                     - cloudfront
@@ -84,7 +84,7 @@ Resources:
           Type: A
           AliasTarget:
             HostedZoneId: ${env:HOSTED_ZONE_ID} #cloudfront hostedzone id
-            DNSName: 
+            DNSName:
               Fn::GetAtt:
                 - FrontPageCloudFront
                 - DomainName

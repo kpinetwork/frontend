@@ -20,7 +20,7 @@
     "e2e": "nx e2e",
     "e2e:cloud": "nx e2e cloud-e2e",
     "format": "nx format:write",
-    "format:check": "npm run format:check --base=origin/master",
+    "format:check": "nx format:check --base=origin/master",
     "format:write": "nx format:write",
     "help": "nx help",
     "lint": "nx workspace-lint && nx lint",
