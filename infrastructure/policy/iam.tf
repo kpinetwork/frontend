@@ -4,7 +4,7 @@
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html
 # ----------------------------------------------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "www_bucket" {
+data "aws_iam_policy_document" "distribution_bucket" {
   statement {
     actions = ["s3:GetObject"]
     principals {
@@ -13,11 +13,11 @@ data "aws_iam_policy_document" "www_bucket" {
         var.cloudfront_distribution_oai_iam_arn
       ]
     }
-    resources = ["${var.www_bucket_information.arn}/*"]
+    resources = ["${var.bucket_information.arn}/*"]
   }
   statement {
     actions   = ["s3:ListBucket"]
-    resources = [var.www_bucket_information.arn]
+    resources = [var.bucket_information.arn]
 
     principals {
       type        = "AWS"
@@ -27,14 +27,14 @@ data "aws_iam_policy_document" "www_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "web_distribution" {
-  bucket = var.www_bucket_information.id
-  policy = data.aws_iam_policy_document.www_bucket.json
+  bucket = var.bucket_information.id
+  policy = data.aws_iam_policy_document.distribution_bucket.json
 }
 
 
 
 resource "aws_s3_bucket_public_access_block" "bucket_restriction" {
-  bucket = var.www_bucket_information.id
+  bucket = var.bucket_information.id
 
   block_public_acls       = true
   block_public_policy     = true

@@ -12,16 +12,13 @@
 
 resource "aws_cloudfront_distribution" "distribution" {
   origin {
-    origin_id = var.www_domain
-    domain_name = var.www_bucket_information.bucket_regional_domain_name
+    origin_id = var.sub_domain
+    domain_name = var.bucket_information.bucket_regional_domain_name
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.web_distribution.cloudfront_access_identity_path
     }
   }
-  aliases = [
-    var.domain,
-    var.www_domain
-  ]
+  aliases = local.aliases
 
   enabled = true
 
@@ -30,7 +27,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = var.www_domain
+    target_origin_id = var.sub_domain
 
     forwarded_values {
       query_string = false
@@ -50,7 +47,7 @@ resource "aws_cloudfront_distribution" "distribution" {
     path_pattern     = "/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id = var.www_domain
+    target_origin_id = var.sub_domain
 
     forwarded_values {
       query_string = false
