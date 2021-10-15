@@ -30,7 +30,11 @@ jobs:
         run: npm run test --if-present
 
       - name: Build project
+<<<<<<< HEAD
         run: nx build cloud
+=======
+        run: nx build cloud --prod
+>>>>>>> feat: KPI-36 Create pre production FrontEnd (#10)
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -59,7 +63,11 @@ jobs:
           terraform validate -no-color
 
       - name: Terraform Plan Prod
+<<<<<<< HEAD
         id: plan-prod
+=======
+        id: plan
+>>>>>>> feat: KPI-36 Create pre production FrontEnd (#10)
         env:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -117,7 +125,11 @@ jobs:
           terraform validate -no-color
 
       - name: Terraform Plan Demo
+<<<<<<< HEAD
         id: plan-demo
+=======
+        id: plan
+>>>>>>> feat: KPI-36 Create pre production FrontEnd (#10)
         env:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
