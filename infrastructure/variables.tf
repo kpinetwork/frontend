@@ -22,14 +22,28 @@ variable "aws_terraform_user_provider" {
   description = "AWS account used to deploy project"
 }
 
-variable "www_domain_name" {
-  default = "www.kpinetwork.com"
-}
+# ----------------------------------------------------------------------------------------------------------------------
+# DOMAIN DEFINITIONS
+# ----------------------------------------------------------------------------------------------------------------------
 
-variable "root_domain_name" {
+variable "domain" {
   default = "kpinetwork.com"
 }
 
 locals {
-  cert_sans = ["*.${var.root_domain_name}", var.root_domain_name]
+  prod_certs = [
+    "www.${var.domain}",
+    var.domain
+  ]
+  demo_certs = [
+    "${terraform.workspace}.${var.domain}"
+  ]
+  environment = terraform.workspace
+  is_production = local.environment == "prod"
+  cert_sans = local.is_production ? local.prod_certs : local.demo_certs
+  domains = {
+    "root" = var.domain
+    "prod" = "www.${var.domain}"
+    "demo" = "demo.${var.domain}"
+  }
 }

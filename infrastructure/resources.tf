@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 resource "aws_route53_zone" "kpinetwork" {
-  name = var.root_domain_name
+  name = var.domain
   lifecycle {
     prevent_destroy = true
   }

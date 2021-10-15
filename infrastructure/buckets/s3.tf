@@ -5,7 +5,7 @@
 # @param cors_rule A rule of Cross-Origin Resource Sharing
 # ----------------------------------------------------------------------------------------------------------------------
 resource "aws_s3_bucket" "bucket" {
-  bucket = var.www_domain
+  bucket = "${var.environment}-${var.bucket_name}-distribution"
   acl = "public-read"
   cors_rule {
     allowed_headers = [

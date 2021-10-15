@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
     branches:
-      - master
+      - demo
 
 jobs:
   ci-test:
@@ -29,9 +29,6 @@ jobs:
       - name: Running tests
         run: npm run test --if-present
 
-      - name: Build project
-        run: nx build cloud --prod
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
@@ -45,6 +42,12 @@ jobs:
         run: |
           cd infrastructure
           terraform init -backend-config="access_key=$TF_VAR_aws_access_key_id" -backend-config="secret_key=$TF_VAR_aws_secret_access_key"
+
+      - name: Terraform Select Workspace
+        id: workspace
+        run: |
+          cd infrastructure
+          terraform workspace select demo
 
       - name: Terraform Validate
         id: validate

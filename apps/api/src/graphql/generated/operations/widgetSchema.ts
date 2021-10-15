@@ -53,8 +53,8 @@ export const widgetSchema = gql`
     filters: [Filters!]!
   }
 
-    extend type Query {
-          # Widget Summary
+  extend type Query {
+    # Widget Summary
     # View: companyDetails
     # Widget: Company Summary
     # Value: company - No Aggregation
@@ -219,27 +219,37 @@ export const widgetSchema = gql`
     # Widget Summary
     # Widget: Rule of 40 Summary
     # Value: ruleOf40Actual
-    widget_statistics309e55b8_0428_4447_992e_6a98401cc78d(input: MultiTransFormationArgs): [MultiTransFormationResults]
+    widget_statistics309e55b8_0428_4447_992e_6a98401cc78d(
+      input: MultiTransFormationArgs
+    ): [MultiTransFormationResults]
 
     # Widget Summary
     # Widget: Growth Rate
     # Value: growthRate
-    widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(input: MultiTransFormationArgs): [MultiTransFormationResults]
+    widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(
+      input: MultiTransFormationArgs
+    ): [MultiTransFormationResults]
 
     # Widget Summary
     # Widget: Avg Growth Rate
     # Value: growthRate
-    widget_statistics8efa4f02_18af_47d8_bb9f_a0c9f2c5f22d(input: MultiTransFormationArgs): [MultiTransFormationResults]
+    widget_statistics8efa4f02_18af_47d8_bb9f_a0c9f2c5f22d(
+      input: MultiTransFormationArgs
+    ): [MultiTransFormationResults]
 
     # Widget Summary
     # Widget: Cohort Company Count
     # Value: company
-    widget_statisticsc706c9e0_3cf2_4720_af66_908b9f4682f1(input: MultiTransFormationArgs): [MultiTransFormationResults]
+    widget_statisticsc706c9e0_3cf2_4720_af66_908b9f4682f1(
+      input: MultiTransFormationArgs
+    ): [MultiTransFormationResults]
 
     # Widget Summary
     # Widget: Margin
     # Value: margin
-    widget_statisticsebd972e9_3a95_4cd0_920a_55430c90c91e(input: MultiTransFormationArgs): [MultiTransFormationResults]
+    widget_statisticsebd972e9_3a95_4cd0_920a_55430c90c91e(
+      input: MultiTransFormationArgs
+    ): [MultiTransFormationResults]
 
     # Filter Bar
     # View: myCohorts
@@ -252,5 +262,5 @@ export const widgetSchema = gql`
     # Widget: Filter 1
     # Widget type: behavior
     workflow_filters_98aa94f8_585e_49dc_b3a5_56dd81c10afd: WorkflowFiltersResult
-    }
-  `;
+  }
+`;
