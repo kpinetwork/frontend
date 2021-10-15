@@ -1,10 +1,9 @@
 name: Process for demo environment frontend app
 
 on:
-  pull_request:
-    types: [opened, edited, reopened, synchronize]
+  push:
     branches:
-      - master
+      - demo
 
 jobs:
   ci-test:
