@@ -59,7 +59,7 @@ jobs:
           terraform validate -no-color
 
       - name: Terraform Plan Prod
-        id: plan
+        id: plan-prod
         env:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -117,7 +117,7 @@ jobs:
           terraform validate -no-color
 
       - name: Terraform Plan Demo
-        id: plan
+        id: plan-demo
         env:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
