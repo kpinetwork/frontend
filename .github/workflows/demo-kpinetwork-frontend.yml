@@ -1,4 +1,4 @@
-name: CI process for frontend app
+name: Process for demo environment frontend app
 
 on:
   pull_request:
