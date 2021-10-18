@@ -39,3 +39,16 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Compiled files terraform
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+# logs
+*.log
+
+# Directories terraform
+.terraform/
+infrastructure/.terraform/
+.vagrant/

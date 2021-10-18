@@ -4,5 +4,4 @@
 variable "bucket_name" {
   default = "kpinetwork-frontend"
 }
-variable "domain" {}
-variable "www_domain" {}
+variable "environment" {}
