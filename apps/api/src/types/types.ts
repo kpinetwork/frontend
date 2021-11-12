@@ -38,7 +38,7 @@ interface ListingItem {
   id?: string;
 }
 
-interface EntityList {
+export interface EntityList {
   [key: string]: ListingItem | ListingItem[];
 }
 

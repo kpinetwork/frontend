@@ -204,7 +204,6 @@ export const widgetResolvers: IResolvers = {
       const result = await dataSources.widgetApi.object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861(
         args.input,
       );
-
       return result === 'not implemented'
         ? dataSources.widgetFakeApi.object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861(args.input, {
             ...rest,
