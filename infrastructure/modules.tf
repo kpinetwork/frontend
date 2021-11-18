@@ -3,6 +3,13 @@ module "buckets" {
   environment = local.environment
 }
 
+
+module "shared" {
+  source = "./shared/"
+  backend = var.backend
+  remote_state_config = local.remote_state_config
+}
+
 module "cdn" {
   source = "./cdn/"
   domain = var.domain
@@ -19,6 +26,7 @@ module "policy" {
   aws_terraform_user_provider = var.aws_terraform_user_provider
   aws_account_id = var.aws_account_id
   cloudfront_distribution_oai_iam_arn = module.cdn.cloudfront_distribution_oai
+  environment = local.environment
 }
 
 module "dns" {
@@ -39,4 +47,27 @@ module "cert" {
   aws_access_key_id = var.aws_access_key_id
   aws_secret_access_key = var.aws_secret_access_key
   cert_sans = local.cert_sans
+}
+
+module "logs" {
+  source = "./logs"
+  environment = local.environment
+}
+
+module "network" {
+  source = "./network"
+  environment = local.environment
+  private_subnet_id = element(module.shared.resources.private_subnet_ids, 0)
+  vpc_id = module.shared.resources.vpc_kpinetwork_id
+}
+
+module "containers" {
+  source = "./containers"
+  environment = local.environment
+  ecs_role_arn = module.policy.roles_arn.ecs_app_role
+  security_group_id = module.shared.resources.security_group_kleeen_api_group.id
+  public_subnet_a_id = module.shared.resources.public_subnet_id
+  cloudwatch_name_task_definition = module.logs.task_kleeen_cloudwatch_name
+  region = var.region
+  lb_target_group_arn = module.network.lb_target_group_arn
 }
