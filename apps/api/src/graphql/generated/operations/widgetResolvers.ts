@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/camelcase: 0, @typescript-eslint/no-unused-vars: 0, max-lines: 0 */
 import { DataListingArgs, DataAggregationArgs, MultiTransFormationArgs } from '../../../types';
 import { IResolvers } from 'apollo-server-express';
 
@@ -25,7 +24,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12664(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
         args.input,
       );
 
@@ -41,7 +40,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12666(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
         args.input,
       );
 
@@ -57,7 +56,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12667(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
         args.input,
       );
 
@@ -89,7 +88,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12690(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
         args.input,
       );
 

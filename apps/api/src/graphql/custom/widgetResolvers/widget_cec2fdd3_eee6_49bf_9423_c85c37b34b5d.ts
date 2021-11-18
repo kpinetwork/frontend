@@ -1,4 +1,6 @@
-import { GetWidgetDataResult, DataAggregationArgs, AuthContext } from '../../../types';
+import { GetWidgetDataResult, DataAggregationArgs, AuthContext, EntityList } from '../../../types';
+import {CrossLinking } from '@kleeen/types';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Companies by Revenue
@@ -8,36 +10,39 @@ export const widget_cec2fdd3_eee6_49bf_9423_c85c37b34b5d = async (
   input: DataAggregationArgs,
   context: AuthContext,
 ): Promise<GetWidgetDataResult | 'not implemented'> => {
-  // KAPI - Integration
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+  try {
+    const revenues = await axios
+    .get('https://api.demo.kpinetwork.com/company-revenue');
 
-  // You can access the token, data sources, and the current user through the 'context' param.
+    let data_categories: Array<string> = []
+    let data_results: Array<number> = []
+    let data_crossLinkings: Array<CrossLinking> = []
 
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
+    revenues.data.forEach(company=> {
+      data_categories.push(company.name);
+      data_results.push(Number(company.revenue_sum));
+      data_crossLinkings.push({id: company.id, "$metadata": {entityType: ""}});
+      
+    });
 
-  return 'not implemented';
+    const format = {
+      xAxis: {
+        categories: data_categories,
+        type: "string",
+        key: "company"
+      },
+      yAxis: {
+        type: "number",
+        key: "revenue",
+        max: 1000000,
+        min: 1
+      }
+    };
+
+    return {format, results: data_results, crossLinking: [data_crossLinkings]}
+    
+  } catch (error) {
+    return 'not implemented';
+  }
 };

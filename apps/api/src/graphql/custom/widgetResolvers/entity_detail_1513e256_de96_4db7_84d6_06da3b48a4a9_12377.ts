@@ -1,4 +1,5 @@
-import { GetListingDataResults, DataListingArgs, AuthContext } from '../../../types';
+import { GetListingDataResults, DataListingArgs, AuthContext, EntityList } from '../../../types';
+import axios from 'axios';
 
 // Widget Summary
 // View: companyDetails
@@ -9,36 +10,74 @@ export const entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377 = async (
   input: DataListingArgs,
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
-  // KAPI - Integration
+  const format = {};
+  const company_id = input.filters?.company;
+  
+  return axios
+    .get(`https://api.demo.kpinetwork.com/companies/${company_id}`)
+    .then((res) => {
+      const item = res.data;
+      const company = {
+        id: item.id,
+        company: {
+          id: item.id,
+          displayValue: item.name,
+          displayMedia: null
+        },
+        "displayValue::company": {
+          id: item.id,
+          displayValue: item.name
+        },
+        geography: {
+          id: item.id,
+          displayMedia: { type: 'text', value: '' },
+          displayValue: 'Nothing',
+        },
+        companyMarginGroup: {
+          id: item.id,
+          displayValue: item.margin_group,
+        },
+        quarterResults: {
+          id: item.id,
+          displayMedia: {
+            type: "text"
+          },
+          displayValue: 5
+        },
+        growthProfile: {
+          id: item.id,
+          displayMedia: { type: 'text', value: item.inves_profile_name },
+          displayValue: item.inves_profile_name,
+        },
+        segment: {
+          id: item.id,
+          displayMedia: { type: 'text', value: item.sector },
+          displayValue: item.sector,
+        },
+        vertical: {
+          id: item.id,
+          displayMedia: { type: 'text', value: item.vertical },
+          displayValue: item.vertical,
+        },
+        cohort: {
+          id: item.id,
+          displayMedia: { type: 'text', value: '' },
+          displayValue: '',
+        },
+        margin: {
+          id: item.id,
+          displayMedia: null,
+          displayValue: 57
+        },
+      };
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+      const data = [
+        company
+      ] as EntityList[];
 
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+      return { format, data };
+    })
+    .catch((_err) => {
+      return 'not implemented';
+    });
 };
