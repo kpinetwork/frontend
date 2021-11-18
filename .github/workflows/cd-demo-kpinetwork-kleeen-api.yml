@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
     branches:
-      - demo
+      - master
 
 jobs:
   build:
@@ -40,11 +40,6 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-      - name: Remove untagged images
-        run: |
-          chmod +x ".github/scripts/remove_untagged_images_for_ecr.sh"
-          bash .github/scripts/remove_untagged_images_for_ecr.sh demo
-
       - name: Download task definition
         run: |
           aws ecs describe-task-definition --task-definition demo_kleeen_api_task \
@@ -65,3 +60,8 @@ jobs:
           service: demo_kleeen_service
           cluster: demo_kleeen_cluster_app
           wait-for-service-stability: true
+
+      - name: Remove untagged images
+        run: |
+          chmod +x ".github/scripts/remove_untagged_images_for_ecr.sh"
+          bash .github/scripts/remove_untagged_images_for_ecr.sh demo

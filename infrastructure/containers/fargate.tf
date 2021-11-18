@@ -1,16 +1,11 @@
 resource "aws_ecs_task_definition" "kleeen_api_task" {
   family = "${var.environment}_kleeen_api_task"
-
-  // Fargate is a type of ECS that requires awsvpc network_mode
   requires_compatibilities = [
-    "FARGATE"]
+    "FARGATE"
+  ]
   network_mode = "awsvpc"
-
-  // Valid sizes are shown here: https://aws.amazon.com/fargate/pricing/
   memory = local.memory_values[var.environment]
   cpu = local.cpu_values[var.environment]
-
-  // Fargate requires task definitions to have an execution role ARN to support ECR images
   execution_role_arn = var.ecs_role_arn
 
   container_definitions = <<EOT
@@ -41,8 +36,8 @@ resource "aws_ecs_task_definition" "kleeen_api_task" {
             "value": "${var.environment}"
           },
           {
-            "name": "TEST",
-            "value": "This is a test"
+            "name": "KPINETWORK_API",
+            "value": "${local.api_domains[var.environment]}"
           }
         ]
     }

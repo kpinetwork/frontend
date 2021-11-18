@@ -70,4 +70,5 @@ module "containers" {
   cloudwatch_name_task_definition = module.logs.task_kleeen_cloudwatch_name
   region = var.region
   lb_target_group_arn = module.network.lb_target_group_arn
+  domain = var.domain
 }

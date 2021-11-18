@@ -1,4 +1,5 @@
 variable "environment" {}
+variable "domain" {}
 variable "ecs_role_arn" {}
 variable "public_subnet_a_id" {}
 variable "security_group_id" {}
@@ -16,5 +17,9 @@ locals {
   memory_values = {
     "prod" = "2048"
     "demo" = "1024"
+  }
+  api_domains = {
+    "prod" = "api.${var.domain}"
+    "demo" = "api.demo.${var.domain}"
   }
 }
