@@ -31,8 +31,8 @@ jobs:
 
       - name: Remove untagged images
         run: |
-          chmod +x ".github/script.sh"
-          ".github/scripts/remove_untagged_images_for_ecr.sh"
+          chmod +x "./.github/script.sh"
+          "./.github/scripts/remove_untagged_images_for_ecr.sh"
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
