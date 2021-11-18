@@ -6,6 +6,7 @@ resource "aws_api_gateway_vpc_link" "vpc_link_kleeen_api" {
   depends_on = [
     aws_lb.nlb]
 }
+
 # API Gateway, Private Integration with VPC Link
 # and deployment of a single resource that will take ANY
 # HTTP method and proxy the request to the NLB

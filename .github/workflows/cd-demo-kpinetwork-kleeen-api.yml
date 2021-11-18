@@ -50,6 +50,14 @@ jobs:
           container-name: demo_app_container
           image: ${{ steps.build-image.outputs.image }}
 
+      - name: Remove untagged images
+        uses: sergeysova/jq-action@v2
+        run: |
+          # make file runnable, might not be necessary
+          chmod +x "${GITHUB_WORKSPACE}/.github/script.sh"
+          # run script
+          "${GITHUB_WORKSPACE}/.github/scripts/remove_untagged_images_for_ecr.sh"
+
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
