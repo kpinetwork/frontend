@@ -54,6 +54,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: demo_kleeen_cluster_app
-          cluster: demo_kleeen_service
+          service: demo_kleeen_service
+          cluster: demo_kleeen_cluster_app
           wait-for-service-stability: true
