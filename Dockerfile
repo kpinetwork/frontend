@@ -9,6 +9,7 @@ RUN npm cache clean --force
 RUN npm install nx
 RUN npm install
 RUN npm ci
+RUN node ./tools/build/version.js
 
 RUN npm run nx build api
 RUN npm prune --production -S
