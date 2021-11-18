@@ -34,7 +34,17 @@ resource "aws_ecs_task_definition" "kleeen_api_task" {
             "awslogs-region": "${var.region}",
             "awslogs-stream-prefix": "ecs"
           }
-        }
+        },
+        "environment": [
+          {
+            "name": "ENVIRONMENT",
+            "value": "${var.environment}"
+          },
+          {
+            "name": "TEST",
+            "value": "This is a test"
+          }
+        ]
     }
 ]
 EOT

@@ -8,7 +8,7 @@ type aws > /dev/null 2>&1 && type jq > /dev/null 2>&1 || {
 }
 
 repository="$1_kpinetwork_kleeen_api_repo"
-echo "$repository: Deleting untagged images"
+echo "$repository: Process initialized"
 
 response=$(aws ecr list-images --repository-name $repository --filter tagStatus=UNTAGGED --max-items 100)
 untaggedImages=$(echo $response | jq -c '.imageIds')

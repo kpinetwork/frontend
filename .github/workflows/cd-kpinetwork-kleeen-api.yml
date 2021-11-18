@@ -14,6 +14,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Set jq actions
+        uses: sergeysova/jq-action@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -26,6 +29,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to Amazon ECR
+        id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: prod_kpinetwork_kleeen_api_repo
@@ -33,3 +37,30 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Remove untagged images
+        run: |
+          chmod +x ".github/scripts/remove_untagged_images_for_ecr.sh"
+          bash .github/scripts/remove_untagged_images_for_ecr.sh prod
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition prod_kleeen_api_task \
+          --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: prod_app_container
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: prod_kleeen_service
+          cluster: prod_kleeen_cluster_app
+          wait-for-service-stability: true

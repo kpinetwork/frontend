@@ -12,7 +12,8 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
 ): Promise<GetListingDataResults | 'not implemented'> => {
   const format = {};
   console.log("entity", input.entity)
-  console.log("is prod", environment.settings.production)
+  console.log("ENVIRONMENT", process.env.ENVIRONMENT)
+  console.log("TEST", process.env.TEST)
   return axios.get('https://api.demo.kpinetwork.com/companies?limit=60')
     .then((res) => {
       const data = res.data.map((item) => {
