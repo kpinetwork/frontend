@@ -30,10 +30,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Remove untagged images
-        shell: bash
-        run: |
-          chmod +x "./.github/scripts/remove_untagged_images_for_ecr.sh"
-          "./.github/scripts/remove_untagged_images_for_ecr.sh demo"
+        run: sh .github/scripts/remove_untagged_images_for_ecr.sh demo
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
