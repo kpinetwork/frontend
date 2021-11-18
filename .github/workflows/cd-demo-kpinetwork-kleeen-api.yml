@@ -53,9 +53,7 @@ jobs:
       - name: Remove untagged images
         uses: sergeysova/jq-action@v2
         run: |
-          # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/.github/script.sh"
-          # run script
           "${GITHUB_WORKSPACE}/.github/scripts/remove_untagged_images_for_ecr.sh"
 
       - name: Deploy Amazon ECS task definition
