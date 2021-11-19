@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  kpinetwork-api:
+    build:
+      context: .
+      target: kpinetwork-api
+    ports:
+      - "3000:3000"
+    container_name: kpinetwork-api

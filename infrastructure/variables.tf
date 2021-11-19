@@ -46,4 +46,15 @@ locals {
     "prod" = "www.${var.domain}"
     "demo" = "demo.${var.domain}"
   }
+  remote_state_config = {
+    bucket      = "kpinetwork-infrastructure"
+    key         = "key/terraform.tfstate"
+    region      = "us-west-2"
+    access_key = var.aws_access_key_id
+    secret_key = var.aws_secret_access_key
+  }
+}
+
+variable "backend" {
+  default     = "s3"
 }
