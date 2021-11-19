@@ -52,6 +52,5 @@ export const getListingData = (input: DataListingArgs): GetListingDataResults | 
 
     return parsedEntityItem;
   }) as GenericEntityItem[];
-
   return { format, data };
 };

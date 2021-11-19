@@ -1,4 +1,5 @@
-import { GetListingDataResults, DataListingArgs, AuthContext } from '../../../types';
+import {GetListingDataResults, DataListingArgs, AuthContext, EntityList} from '../../../types';
+import axios from "axios";
 
 // Widget Summary
 // Widget: Company Table
@@ -8,36 +9,58 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
   input: DataListingArgs,
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
-  // KAPI - Integration
+  const format = {};
+  return axios.get('https://api.demo.kpinetwork.com/companies?limit=60')
+    .then((res) => {
+      const data = res.data.map((item) => {
+        const parsedEntityItem = {
+          id: item.id,
+          'displayValue::company': {
+            id: item.id,
+            displayValue: item.name
+          },
+          company:{
+            id: item.id,
+            displayValue: item.name,
+            displayMedia: null
+          },
+          geography:{
+            id: item.id,
+            displayMedia: { type: 'text', value: '' },
+            displayValue: ''
+          },
+          companyMarginGroup:{
+            id: item.id,
+            displayValue: item.margin_group
+          },
+          growthProfile:{
+            id: item.id,
+            displayMedia: { type: 'text', value: item.inves_profile_name },
+            displayValue: item.inves_profile_name
+          },
+          segment:{
+            id: item.id,
+            displayMedia: { type: 'text', value: item.sector },
+            displayValue: item.sector
+          },
+          vertical:{
+            id: item.id,
+            displayMedia: { type: 'text', value: item.vertical },
+            displayValue: item.vertical
+          },
+          cohort: {
+            id: item.id,
+            displayMedia: { type: 'text', value: "" },
+            displayValue: ''
+          }
+        };
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+        return parsedEntityItem;
+      }) as EntityList[];
 
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+      return {format, data};
+    })
+    .catch((err) => {
+      return 'not implemented';
+    });
 };

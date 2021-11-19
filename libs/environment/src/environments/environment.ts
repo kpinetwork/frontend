@@ -3,5 +3,5 @@
 
 export const environment = {
   production: false,
-  middlewareAPI: 'http://localhost:3000',
+  middlewareAPI: 'https://ue0s37mark.execute-api.us-west-2.amazonaws.com/demo',
 };
