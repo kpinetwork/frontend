@@ -27,7 +27,7 @@ resource "aws_api_gateway_method" "main" {
     "method.request.path.proxy" = true
   }
 }
-resource "aws_api_gateway_integration" "main" {
+resource "aws_api_gateway_integration" "kpinetwork_kleeen_integration" {
   rest_api_id = aws_api_gateway_rest_api.kpinetwork_kleeen_api.id
   resource_id = aws_api_gateway_resource.kpinetwork_kleeen_resource.id
   http_method = aws_api_gateway_method.main.http_method
@@ -42,13 +42,4 @@ resource "aws_api_gateway_integration" "main" {
   depends_on = [
     aws_lb.nlb]
 }
-resource "aws_api_gateway_deployment" "main" {
-  rest_api_id = aws_api_gateway_rest_api.kpinetwork_kleeen_api.id
-  stage_name = var.environment
-  stage_description = "Deployed at ${timestamp()}"
-  depends_on = [
-    aws_api_gateway_integration.main]
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+

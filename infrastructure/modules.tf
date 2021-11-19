@@ -72,3 +72,10 @@ module "containers" {
   lb_target_group_arn = module.network.lb_target_group_arn
   domain = var.domain
 }
+
+module "gateway_deployment" {
+  source = "./gateway_deployment"
+  api_gateway_rest_api_id = module.network.api_gateway_rest_api_id
+  environment = local.environment
+  api_integration = module.network.aws_api_gateway_integration
+}

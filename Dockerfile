@@ -1,8 +1,5 @@
 FROM node:14.17 AS kpinetwork-base
 
-ENV NX_PRODUCTION=true
-ENV NX_NODE_ENV=production
-
 WORKDIR /app
 COPY . .
 RUN npm cache clean --force
