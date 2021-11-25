@@ -1,4 +1,6 @@
-import { GetListingDataResults, DataListingArgs, AuthContext } from '../../../types';
+import { GetListingDataResults, DataListingArgs, AuthContext, EntityList } from '../../../types';
+import {environment} from '../../../environments/environment';
+import axios from "axios";
 
 // Widget Summary
 // Widget: Cohort Configuration
@@ -8,36 +10,37 @@ export const object_listing_c44a3d3e_9e91_45dd_a417_c00196cb7ce9 = async (
   input: DataListingArgs,
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
-  // KAPI - Integration
+  const format = {};
+  return axios.get(`https://${environment.KPINETWORK_API}/cohorts`)
+    .then((res) => {
+      const data = res.data.map((item) => {
+        const parsedEntityItem = {
+          id: item.cohort_id,
+          "displayValue::cohortName": {
+            id: item.cohort_id,
+            displayValue: item.cohort_name
+          },
+          cohortName: {
+            id: item.cohort_id,
+            displayValue: item.cohort_name,
+            displayMedia: {
+              type: "text",
+              value: item.cohort_name
+            }
+          },
+          cohortUrl: {
+            id: item.cohort_id,
+            displayMedia: null,
+            displayValue: ""
+          }
+        };
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+        return parsedEntityItem;
+      }) as EntityList[];
 
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+      return { format, data , pagination: null};
+    })
+    .catch((_err) => {
+      return 'not implemented';
+    });
 };

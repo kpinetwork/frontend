@@ -1,4 +1,7 @@
 import { GetWidgetDataResult, DataAggregationArgs, AuthContext } from '../../../types';
+import {environment} from '../../../environments/environment';
+import {CrossLinking } from '@kleeen/types';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Cohort by Revenue
@@ -8,36 +11,36 @@ export const widget_e2e6324e_47d9_4658_b744_dd4aa56c2e4a = async (
   input: DataAggregationArgs,
   context: AuthContext,
 ): Promise<GetWidgetDataResult | 'not implemented'> => {
-  // KAPI - Integration
+  try {
+    const revenues = await axios
+    .get(`https://${environment.KPINETWORK_API}/cohorts/cohort-revenue`);
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+    let data_categories: Array<string> = []
+    let data_results: Array<number> = []
+    let data_crossLinkings: Array<CrossLinking> = []
 
-  // You can access the token, data sources, and the current user through the 'context' param.
+    revenues.data.forEach(cohort=> {
+      data_categories.push(cohort.name);
+      data_results.push(Number(cohort.revenue_sum));
+      data_crossLinkings.push({id: cohort.id, "$metadata": {entityType: ""}});
+      
+    });
 
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+    const format = {
+      xAxis: {
+        categories: data_categories,
+        type: "string",
+        key: "cohort"
+      },
+      yAxis: {
+        type: "number",
+        key: "revenue",
+        max: Math.max(...data_results),
+        min: Math.min(...data_results)
+      }
+    };
+    return {format, results: data_results, crossLinking: [data_crossLinkings]};
+  } catch (_error) {
+    return 'not implemented';
+  }
 };

@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/camelcase: 0, @typescript-eslint/no-unused-vars: 0, max-lines: 0 */
 import { DataListingArgs, DataAggregationArgs, MultiTransFormationArgs } from '../../../types';
 import { IResolvers } from 'apollo-server-express';
 
@@ -391,7 +390,7 @@ export const widgetResolvers: IResolvers = {
       const result = await dataSources.widgetApi.widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(
         args.input,
       );
-
+ 
       return result === 'not implemented'
         ? dataSources.widgetFakeApi.widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(args.input, {
             ...rest,

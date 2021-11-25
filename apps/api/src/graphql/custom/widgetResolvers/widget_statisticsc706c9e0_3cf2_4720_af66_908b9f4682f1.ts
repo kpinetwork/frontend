@@ -1,4 +1,5 @@
-import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from '../../../types';
+import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext} from '../../../types';
+import { Transformation } from '../../../utils';
 
 // Widget Summary
 // Widget: Cohort Company Count
@@ -6,37 +7,17 @@ import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from
 export const widget_statisticsc706c9e0_3cf2_4720_af66_908b9f4682f1 = async (
   input: MultiTransFormationArgs,
   context: AuthContext,
-): Promise<MultiTransFormationResults | 'not implemented'> => {
-  // KAPI - Integration
+): Promise<MultiTransFormationResults[] | 'not implemented'> => {
+  const format = {};
+  const crossLinking = []
+  const cohort_id = input.filters?.cohort;
+  let widget_data = { format, results: [], crossLinking , transformation: Transformation.CountTotal};
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
-
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+  return context.dataSources.api10318.getEntity(cohort_id)
+    .then((cohort) => {
+      widget_data.results.push(cohort.total_companies);
+      return [widget_data];
+    }).catch((_err) => {
+      return [widget_data];
+    });
 };
