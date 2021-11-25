@@ -41,7 +41,7 @@ export const widget_cec2fdd3_eee6_49bf_9423_c85c37b34b5d = async (
       }
     };
     return {format, results: data_results, crossLinking: [data_crossLinkings]};    
-  } catch (error) {
-    return 'not implemented';
+  } catch (_error) {
+    return {format: {}, results: [], crossLinking: []};  
   }
 };

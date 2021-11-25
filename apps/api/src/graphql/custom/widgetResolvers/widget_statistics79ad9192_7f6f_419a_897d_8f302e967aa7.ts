@@ -22,7 +22,7 @@ export const widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7 = async (
   ];
 
   try {
-    const response = await  axios.get(`https://${environment.KPINETWORK_API}/metrics/${company_id}/avg?name=Growth_Rate`);
+    const response = await  axios.get(`https://${environment.KPINETWORK_API}/metrics/company/${company_id}/avg?name=Growth_Rate`);
     const average = response.data.average? response.data.average : 0;
     
     return [{format, results: [average], transformation: Transformation.SelfSingle, crossLinking}];

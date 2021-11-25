@@ -16,7 +16,7 @@ export const widget_84c7df71_6670_46cb_9571_102ce589cc47 = async (
   };
   try {
     const company_id = input.filters?.company;
-    const endpoint = `https://${environment.KPINETWORK_API}/metrics/${company_id}?name=Ebitda&scenario_type=Budget`;
+    const endpoint = `https://${environment.KPINETWORK_API}/metrics/company/${company_id}?name=Ebitda&scenario_type=Budget`;
     const response = await axios.get(endpoint);
     let data_results: Array<Array<number>> = []
     let data_crossLinkings: Array<CrossLinking> = []

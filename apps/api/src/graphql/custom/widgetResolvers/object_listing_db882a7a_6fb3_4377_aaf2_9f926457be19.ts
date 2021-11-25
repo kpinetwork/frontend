@@ -12,7 +12,7 @@ export const object_listing_db882a7a_6fb3_4377_aaf2_9f926457be19 = async (
   input: DataListingArgs,
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
-  const format = {}
+  const format = {};
   const company_id = input.filters?.company;
 
   const setDefaultMetrics = (scenario: Object) => {
@@ -31,8 +31,7 @@ export const object_listing_db882a7a_6fb3_4377_aaf2_9f926457be19 = async (
 
   try {
     const response = await axios
-      .get(`https://${environment.KPINETWORK_API}/scenarios?company=${company_id}&scenario_type=Budget`);
-
+      .get(`https://${environment.KPINETWORK_API}/scenarios/company/${company_id}?scenario_type=Budget`);
     const data_scenarios = response.data.reduce((data_scenarios, item) => {
       const scenario = (data_scenarios[item.id] || {});
       const metric = {

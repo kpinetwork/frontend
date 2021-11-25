@@ -28,7 +28,7 @@ export const object_listing_cb81accf_1a8d_41da_b43b_7d05ef7bcbf1 = async (
   };
   try {
     const response = await axios
-    .get(`https://${environment.KPINETWORK_API}/scenarios?cohort=${cohort_id}`);
+    .get(`https://${environment.KPINETWORK_API}/cohorts/${cohort_id}/scenarios`);
     
       const data_scenarios = response.data.reduce((data_scenarios, item) => {
         const scenario = (data_scenarios[item.id] || {});

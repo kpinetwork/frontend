@@ -1,4 +1,5 @@
-import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext, EntityList } from '../../../types';
+import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext} from '../../../types';
+import { Transformation } from '../../../utils';
 
 // Widget Summary
 // Widget: Cohort Company Count
@@ -6,23 +7,17 @@ import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext, Entit
 export const widget_statisticsc706c9e0_3cf2_4720_af66_908b9f4682f1 = async (
   input: MultiTransFormationArgs,
   context: AuthContext,
-): Promise<MultiTransFormationResults | 'not implemented'> => {
+): Promise<MultiTransFormationResults[] | 'not implemented'> => {
   const format = {};
+  const crossLinking = []
   const cohort_id = input.filters?.cohort;
-  return context.dataSources.api12377.getEntity(cohort_id)
+  let widget_data = { format, results: [], crossLinking , transformation: Transformation.CountTotal};
+
+  return context.dataSources.api10318.getEntity(cohort_id)
     .then((cohort) => {
-      const item = {
-        id: cohort.cohort_id,
-        "displayValue::cohort": {
-          id: cohort.cohort_id,
-          displayValue: cohort.cohort_name
-        },
-        company: {
-          displayValue: cohort.total_companies
-        }
-      };
-      return { format, data: [item] as EntityList[] };
+      widget_data.results.push(cohort.total_companies);
+      return [widget_data];
     }).catch((_err) => {
-      return 'not implemented';
+      return [widget_data];
     });
 };

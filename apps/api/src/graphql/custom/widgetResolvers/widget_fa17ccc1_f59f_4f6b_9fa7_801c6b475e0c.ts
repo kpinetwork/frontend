@@ -2,6 +2,7 @@ import { GetWidgetDataResult, DataAggregationArgs, AuthContext } from '../../../
 import {environment} from '../../../environments/environment';
 import {CrossLinking } from '@kleeen/types';
 import axios from 'axios';
+
 // Widget Summary
 // Widget: Revenue Summary
 // Value: revenue - No Aggregation
@@ -14,7 +15,7 @@ export const widget_fa17ccc1_f59f_4f6b_9fa7_801c6b475e0c = async (
     const company_id = input.filters?.company;
 
     const revenues = await axios
-    .get(`https://${environment.KPINETWORK_API}/metrics/${company_id}?name=Revenue`);
+    .get(`https://${environment.KPINETWORK_API}/metrics/company/${company_id}?name=Revenue`);
 
     let data_categories: Array<string> = []
     let data_results: Array<Array<number>> = []
@@ -44,6 +45,6 @@ export const widget_fa17ccc1_f59f_4f6b_9fa7_801c6b475e0c = async (
     };
     return {format, results: data_results, crossLinking: [data_crossLinkings]};
   } catch (_error) {
-    return 'not implemented';
+    return {format: {}, results: [], crossLinking: []};
   }
 };
