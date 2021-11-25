@@ -1,13 +1,15 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import { KapiCrud, dispatchCustomAction } from '../../../realisticFakeData';
 import { AutoCompleteParams, CustomActionArgs, DispatchCustomActionResults } from '../../../types';
+import {environment} from '../../../environments/environment';
+import axios from 'axios';
 
 // KAPI - Integration
 
 export class ApiCompany extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'https://put.your.api.here/';
+    this.baseURL = environment.KPINETWORK_API;
     // You can access the token, data sources,
     // and the current user through 'this.context'.
   }
@@ -46,10 +48,18 @@ export class ApiCompany extends RESTDataSource {
 
   // Get Company
   async getEntity(id: string) {
-    return KapiCrud.get('company', id);
-
-    // Sample HTTP GET request.
-    // return this.get(`company/${id}`);
+    if (!id){
+      return {}
+    }
+    
+    return axios
+    .get(`https://${this.baseURL}/companies/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((_err) => {
+      throw _err;
+    });
   }
 
   // Update Company

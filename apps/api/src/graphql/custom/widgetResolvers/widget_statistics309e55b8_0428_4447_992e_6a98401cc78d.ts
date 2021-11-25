@@ -1,4 +1,7 @@
 import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from '../../../types';
+import { environment } from '../../../environments/environment';
+import { Transformation } from '../../../utils';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Rule of 40 Summary
@@ -6,37 +9,31 @@ import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from
 export const widget_statistics309e55b8_0428_4447_992e_6a98401cc78d = async (
   input: MultiTransFormationArgs,
   context: AuthContext,
-): Promise<MultiTransFormationResults | 'not implemented'> => {
-  // KAPI - Integration
+): Promise<MultiTransFormationResults[] | 'not implemented'> => {
+  const cohort_id = input.filters?.cohort;
+  const format = {};
+  const crossLinking = [
+    {
+      id: cohort_id,
+      "$metadata": {
+        "entityType": ""
+      }
+    }
+  ];
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+  try {
+    const response = await axios.get(`https://${environment.KPINETWORK_API}/metrics/cohort/${cohort_id}/avg?name=Rule_of_40`);
+    const data = response.data;
+    const average = data.average ? data.average : 0;
+    const min = data.min ? data.min : 0;
+    const max = data.max ? data.max : 0;
 
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+    return [
+      { format, results: [average], transformation: Transformation.Average, crossLinking },
+      { format, results: [min], transformation: Transformation.Max, crossLinking },
+      { format, results: [max], transformation: Transformation.Min, crossLinking }
+    ];
+  } catch (_error) {
+    return [{ format, results: [], transformation: Transformation.Average, crossLinking }];
+  }
 };

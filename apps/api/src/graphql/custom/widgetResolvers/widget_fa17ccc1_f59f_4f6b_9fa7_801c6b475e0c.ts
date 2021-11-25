@@ -1,4 +1,7 @@
 import { GetWidgetDataResult, DataAggregationArgs, AuthContext } from '../../../types';
+import {environment} from '../../../environments/environment';
+import {CrossLinking } from '@kleeen/types';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Revenue Summary
@@ -8,36 +11,40 @@ export const widget_fa17ccc1_f59f_4f6b_9fa7_801c6b475e0c = async (
   input: DataAggregationArgs,
   context: AuthContext,
 ): Promise<GetWidgetDataResult | 'not implemented'> => {
-  // KAPI - Integration
+  try {
+    const company_id = input.filters?.company;
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+    const revenues = await axios
+    .get(`https://${environment.KPINETWORK_API}/metrics/company/${company_id}?name=Revenue`);
 
-  // You can access the token, data sources, and the current user through the 'context' param.
+    let data_categories: Array<string> = []
+    let data_results: Array<Array<number>> = []
+    let data_crossLinkings: Array<CrossLinking> = []
+    let count = 0;
+    let max_value = 0;
+    revenues.data.forEach(metric => {
+      data_categories.push(metric.scenario);
+      data_results.push([count++, Number(metric.value)]);
+      data_crossLinkings.push({id: metric.id, "$metadata": {entityType: ""}});
+      if (Number(metric.value)> max_value)
+        max_value = Number(metric.value);
+    });
 
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+    const format = {
+      xAxis: {
+        categories: data_categories,
+        type: "string",
+        key: "quarterResults"
+      },
+      yAxis: {
+        type: "number",
+        key: "revenue",
+        max: max_value,
+        min: 1
+      }
+    };
+    return {format, results: data_results, crossLinking: [data_crossLinkings]};
+  } catch (_error) {
+    return {format: {}, results: [], crossLinking: []};
+  }
 };

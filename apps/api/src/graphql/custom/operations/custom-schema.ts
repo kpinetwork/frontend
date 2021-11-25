@@ -9,5 +9,12 @@ export const customSchema = gql`
   extend type Query {
     # Add your custom schema HERE.
     myCustomQueryExample: String
+
+    # Widget Summary
+    # View: companyDetails
+    # Widget: Company Summary
+    # Value: Company Details
+    # Widget type: behavior
+    getCompanyDetails(input: DataListingArgs): ListingResult
   }
 `;

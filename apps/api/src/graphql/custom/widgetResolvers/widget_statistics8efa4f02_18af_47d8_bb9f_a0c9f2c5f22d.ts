@@ -1,4 +1,7 @@
 import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from '../../../types';
+import { environment } from '../../../environments/environment';
+import { Transformation } from '../../../utils';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Avg Growth Rate
@@ -6,37 +9,25 @@ import { MultiTransFormationResults, MultiTransFormationArgs, AuthContext } from
 export const widget_statistics8efa4f02_18af_47d8_bb9f_a0c9f2c5f22d = async (
   input: MultiTransFormationArgs,
   context: AuthContext,
-): Promise<MultiTransFormationResults | 'not implemented'> => {
-  // KAPI - Integration
+): Promise<MultiTransFormationResults[] | 'not implemented'> => {
+  const cohort_id = input.filters?.cohort;
+  const format = {};
+  const crossLinking = [
+    {
+      id: cohort_id,
+      "$metadata": {
+        "entityType": ""
+      }
+    }
+  ];
+  let widget_data = { format, results: [], transformation: Transformation.SelfSingle, crossLinking };
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
-
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+  try {
+    const response = await axios.get(`https://${environment.KPINETWORK_API}/metrics/cohort/${cohort_id}/avg?name=Growth_Rate`);
+    const average = response.data.average? response.data.average : 0;
+    widget_data.results.push(average)
+    return [widget_data];
+  } catch (_error) {
+    return [widget_data];;
+  }
 };
