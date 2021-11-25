@@ -1,4 +1,6 @@
 import { GetListingDataResults, DataListingArgs, AuthContext, EntityList } from '../../../types';
+import {environment} from '../../../environments/environment';
+import axios from 'axios';
 
 // Widget Summary
 // View: Company Details
@@ -15,7 +17,7 @@ export const object_listing_db882a7a_6fb3_4377_aaf2_9f926457be19 = async (
 
   const setDefaultMetrics = (scenario: Object) => {
     const metrics = [
-      'budgetRevenue', 'bugdetEbidta', 'budgetedEbitdaMargins', 'ruleOf40Budgeted', 
+      'budgetRevenue', 'bugdetEbidta', 'budgetedEbitdaMargins', 'ruleOf40Budgeted',
       'budgetedVariableMargin',
     ]
     metrics.forEach(metric => {
@@ -28,27 +30,41 @@ export const object_listing_db882a7a_6fb3_4377_aaf2_9f926457be19 = async (
   };
 
   try {
-    const scenario = {
-      id: "",
-      "displayValue::quarterResults": {
-        id: "",
-        displayValue: ""
-      },
-      quarterResults : {
-        id: "",
-        displayValue: "",
-        displayMedia: {
-            type: "text",
-            value: ""
-        }
-      },
-    };
-    setDefaultMetrics(scenario);
+    const response = await axios
+      .get(`https://${environment.KPINETWORK_API}/scenarios?company=${company_id}&scenario_type=Budget`);
 
-    const data  = [scenario] as EntityList[];
-    
-    return {format,  data, pagination: null}
-  } catch (error) {
+    const data_scenarios = response.data.reduce((data_scenarios, item) => {
+      const scenario = (data_scenarios[item.id] || {});
+      const metric = {
+        id: item.metric_id,
+        displayMedia: null,
+        displayValue: item.metric_value
+      }
+      if (Object.entries(scenario).length === 0) {
+        scenario["id"] = item.id;
+        scenario["displayValue::quarterResults"] = {
+          id: item.id,
+          displayValue: item.name
+        };
+        scenario["quarterResults"] = {
+          id: item.id,
+          displayValue: item.name,
+          displayMedia: {
+            type: "text",
+            value: item.name
+          }
+        };
+        setDefaultMetrics(scenario);
+      }
+      const name = item.metric_name.toLowerCase()
+      name === 'ebitda' ? scenario['ebidta'] = metric : scenario[name] = metric
+      data_scenarios[item.id] = scenario
+
+      return data_scenarios;
+    }, {});
+    const data = Object.values(data_scenarios) as EntityList[];
+    return { format, data, pagination: null };
+  } catch (_error) {
     return 'not implemented';
   }
 };

@@ -1,4 +1,5 @@
 import { GetListingDataResults, DataListingArgs, AuthContext, EntityList } from '../../../types';
+import {environment} from '../../../environments/environment';
 import axios from 'axios';
 
 // Widget Summary
@@ -30,7 +31,7 @@ export const object_listing_1fc75be7_6b3d_435b_bbe6_84fdba3a81e0 = async (
 
   try {
     const scenarios = await axios
-    .get(`https://api.demo.kpinetwork.com/scenarios?company=${company_id}`);
+    .get(`https://${environment.KPINETWORK_API}/scenarios?company=${company_id}`);
 
     const data_scenarios = scenarios.data.reduce((data_scenarios, item) => {
       const scenario = (data_scenarios[item.id] || {});
@@ -65,7 +66,7 @@ export const object_listing_1fc75be7_6b3d_435b_bbe6_84fdba3a81e0 = async (
 
     const data = Object.values(data_scenarios) as EntityList[];
     
-    return {format,  data, pagination: null}
+    return {format,  data, pagination: null};
   } catch (error) {
     return 'not implemented';
   }

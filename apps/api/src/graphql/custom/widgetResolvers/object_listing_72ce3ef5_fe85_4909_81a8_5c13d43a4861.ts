@@ -1,4 +1,5 @@
 import {GetListingDataResults, DataListingArgs, AuthContext, EntityList} from '../../../types';
+import {environment} from '../../../environments/environment';
 import axios from "axios";
 
 // Widget Summary
@@ -10,7 +11,7 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
   const format = {};
-  return axios.get('https://api.demo.kpinetwork.com/companies?limit=60')
+  return axios.get(`https://${environment.KPINETWORK_API}/companies?limit=60`)
     .then((res) => {
       const data = res.data.map((item) => {
         const parsedEntityItem = {
@@ -27,7 +28,7 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
           geography:{
             id: item.id,
             displayMedia: { type: 'text', value: '' },
-            displayValue: ''
+            displayValue: item.city,
           },
           companyMarginGroup:{
             id: item.id,
@@ -49,7 +50,7 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
             displayValue: item.vertical
           },
           cohort: {
-            id: item.id,
+            id: '',
             displayMedia: { type: 'text', value: "" },
             displayValue: ''
           }
@@ -60,7 +61,7 @@ export const object_listing_72ce3ef5_fe85_4909_81a8_5c13d43a4861 = async (
 
       return {format, data};
     })
-    .catch((err) => {
+    .catch((_err) => {
       return 'not implemented';
     });
 };

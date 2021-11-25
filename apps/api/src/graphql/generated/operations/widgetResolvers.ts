@@ -24,7 +24,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12664(
         args.input,
       );
 
@@ -40,7 +40,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12666(
         args.input,
       );
 
@@ -56,7 +56,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12667(
         args.input,
       );
 
@@ -88,7 +88,7 @@ export const widgetResolvers: IResolvers = {
       args: { input: DataListingArgs },
       { dataSources, ...rest },
     ) => {
-      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12377(
+      const result = await dataSources.widgetApi.entity_detail_1513e256_de96_4db7_84d6_06da3b48a4a9_12690(
         args.input,
       );
 
@@ -390,7 +390,7 @@ export const widgetResolvers: IResolvers = {
       const result = await dataSources.widgetApi.widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(
         args.input,
       );
-
+ 
       return result === 'not implemented'
         ? dataSources.widgetFakeApi.widget_statistics79ad9192_7f6f_419a_897d_8f302e967aa7(args.input, {
             ...rest,

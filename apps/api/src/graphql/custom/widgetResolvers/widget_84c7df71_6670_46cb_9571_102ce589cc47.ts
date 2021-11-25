@@ -1,4 +1,7 @@
 import { GetWidgetDataResult, DataAggregationArgs, AuthContext } from '../../../types';
+import {environment} from '../../../environments/environment';
+import {CrossLinking } from '@kleeen/types';
+import axios from 'axios';
 
 // Widget Summary
 // Widget: Ebitda Trend
@@ -8,36 +11,41 @@ export const widget_84c7df71_6670_46cb_9571_102ce589cc47 = async (
   input: DataAggregationArgs,
   context: AuthContext,
 ): Promise<GetWidgetDataResult | 'not implemented'> => {
-  // KAPI - Integration
+  const toTimestamp = (date: string) => {
+    return new Date(date).getTime();
+  };
+  try {
+    const company_id = input.filters?.company;
+    const endpoint = `https://${environment.KPINETWORK_API}/metrics/${company_id}?name=Ebitda&scenario_type=Budget`;
+    const response = await axios.get(endpoint);
+    let data_results: Array<Array<number>> = []
+    let data_crossLinkings: Array<CrossLinking> = []
+    let max_value: Number , min_value: Number = 0;
 
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
+    response.data.forEach(metric => {
+      let value = Number(metric.value);
+      let date = metric.start_at.concat("T00:00");
+      data_results.push([toTimestamp(date), value]);
+      data_crossLinkings.push({id: metric.id, "$metadata": {entityType: ""}});
+      if(value > max_value) max_value = value;
+      if(value < min_value) min_value = value;
+    });
 
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+    const format = {
+      "xAxis": {
+        type: "datetime",
+        key: "timestamp"
+      },
+      yAxis: {
+          type: "number",
+          key: "ebidta",
+          max: max_value,
+          min: min_value
+      }
+    };
+    return {crossLinking : [data_crossLinkings], format, results: data_results};
+    
+  } catch (_error) {
+    return 'not implemented';
+  }
 };

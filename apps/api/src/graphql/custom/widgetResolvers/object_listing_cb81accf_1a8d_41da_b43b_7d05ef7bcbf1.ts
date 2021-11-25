@@ -1,4 +1,6 @@
-import { GetListingDataResults, DataListingArgs, AuthContext } from '../../../types';
+import { GetListingDataResults, DataListingArgs, AuthContext, EntityList } from '../../../types';
+import {environment} from '../../../environments/environment';
+import axios from 'axios';
 
 // Widget Summary
 // View: Cohort Details
@@ -10,36 +12,57 @@ export const object_listing_cb81accf_1a8d_41da_b43b_7d05ef7bcbf1 = async (
   input: DataListingArgs,
   context: AuthContext,
 ): Promise<GetListingDataResults | 'not implemented'> => {
-  // KAPI - Integration
-
-  // In order for you to connect your backend, you can add in here your code
-  // that fetch the corresponding API data.
-
-  // You can access the token, data sources, and the current user through the 'context' param.
-
-  // Please replace the default return statement ('not implemented') with the
-  // required widget response, e.g.
-  // const format = {
-  //   xAxis: {
-  //     type: 'datetime', // The type of the attribute, usually datetime for x axis.
-  //     key: 'yourAttribute',
-  //     isNumericType: true, // True or false depending on the type
-  //   },
-  //   yAxis: {
-  //     type: 'string', // String or any other KAPI type, depending on your attribute
-  //     key: 'yourAttribute',
-  //     isNumericType: false, // True or false depending on the type
-  //   },
-  // };
-  // return fetch('http://put.your.api.here/your-resource') // Fetch is available through npm package node-fetch
-  //   .then((http_response) => http_response.json()) // Extracts the JSON body content from the http response.
-  //   .then((res) => {
-  //     return { format, res };
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     return 'not implemented';
-  //   });
-
-  return 'not implemented';
+  const format = {}
+  const cohort_id = input.filters?.company;
+  const setDefaultMetrics = (scenario: Object) => {
+    const metrics = [
+      'revenue', 'ebidta', 'growthRevenue', 'growthEbitda', 'ruleOf40Budgeted'
+    ]
+    metrics.forEach(metric => {
+      scenario[metric] = {
+        id: "",
+        displayMedia: null,
+        displayValue: ""
+      }
+    });
+  };
+  try {
+    const response = await axios
+    .get(`https://${environment.KPINETWORK_API}/scenarios?cohort=${cohort_id}`);
+    
+      const data_scenarios = response.data.reduce((data_scenarios, item) => {
+        const scenario = (data_scenarios[item.id] || {});
+        const metric = {
+            id: item.metric_id,
+            displayMedia: null,
+            displayValue: item.metric_value
+        }
+        if (Object.entries(scenario).length === 0){
+            scenario["id"]  = item.id;
+            scenario["displayValue::quarterResults"] = {
+                id: item.id,
+                displayValue: item.name
+            };
+            scenario["quarterResults"] = {
+                id: item.id,
+                displayValue: item.name,
+                displayMedia: {
+                    type: "text",
+                    value: item.name
+                }
+            };
+            setDefaultMetrics(scenario);
+        } 
+        const name = item.metric_name.toLowerCase()
+        name === 'ebitda'? scenario['ebidta'] = metric  : scenario[name] = metric
+        data_scenarios[item.id] = scenario
+      
+        return data_scenarios;
+      }, {});
+      const data = Object.values(data_scenarios) as EntityList[];
+      return {format,  data, pagination: null};
+    
+  } catch (_error) {
+    return 'not implemented';
+  }
 };
